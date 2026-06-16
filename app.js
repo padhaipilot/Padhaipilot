@@ -29,12 +29,13 @@ if(darkModeToggle) {
 const navItems = document.querySelectorAll('.bottom-nav .nav-item:not(.center-btn)');
 navItems.forEach(item => {
   item.addEventListener('click', function(e) {
+    e.preventDefault();
     navItems.forEach(nav => nav.classList.remove('active'));
     this.classList.add('active');
   });
 });
 
-// 3. LOGIN MODAL LOGIC
+// 3. LOGIN MODAL LOGIC (Open / Close)
 const loginBtn = document.querySelector('.login-btn');
 const loginModal = document.getElementById('loginModal');
 const closeModal = document.getElementById('closeModal');
@@ -47,7 +48,9 @@ if (loginBtn && loginModal && closeModal) {
     });
 }
 
-// 4. FIREBASE OTP LOGIC
+// ==========================================
+// 4. FIREBASE EMAIL & FIRESTORE DATABASE LOGIC
+// ==========================================
 const firebaseConfig = {
   apiKey: "AIzaSyDHo4a317WqzvSFB31X9RdbBksUNb81fZM",
   authDomain: "padhaipilot-1dcae.firebaseapp.com",
@@ -58,47 +61,79 @@ const firebaseConfig = {
   measurementId: "G-7MTYEEHHMT"
 };
 
+// Firebase aur Database ko Start karna
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
 }
 const auth = firebase.auth();
+const db = firebase.firestore();
 
-// Recaptcha setup
-window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-  'size': 'invisible'
-});
+// Button aur Inputs ko pakadna
+const registerBtn = document.getElementById('registerBtn');
+const regName = document.getElementById('regName');
+const regPhone = document.getElementById('regPhone');
+const regEmail = document.getElementById('regEmail');
+const regPass = document.getElementById('regPass');
 
-const sendOtpBtn = document.getElementById('sendOtpBtn');
-const verifyOtpBtn = document.getElementById('verifyOtpBtn');
-const phoneInput = document.getElementById('phoneNumber');
-const otpInput = document.getElementById('otpCode');
+if(registerBtn) {
+    registerBtn.addEventListener('click', () => {
+        const nameVal = regName.value.trim();
+        const phoneVal = regPhone.value.trim();
+        const emailVal = regEmail.value.trim();
+        const passVal = regPass.value.trim();
 
-if(sendOtpBtn) {
-    sendOtpBtn.addEventListener('click', () => {
-        const phoneNumber = "+91" + phoneInput.value;
-        if(phoneInput.value.length !== 10) { alert("Sahi Number Daalo!"); return; }
-        
-        sendOtpBtn.innerText = "Sending...";
-        auth.signInWithPhoneNumber(phoneNumber, window.recaptchaVerifier)
-        .then((confirmationResult) => {
-            window.confirmationResult = confirmationResult;
-            document.getElementById('phone-auth-container').style.display = "none";
-            document.getElementById('otp-auth-container').style.display = "block";
-            alert("OTP Sent!");
-        }).catch((error) => {
-            alert("Error: " + error.message);
-            sendOtpBtn.innerText = "Get OTP";
-        });
-    });
-}
+        // Check 1: Koi dabba khali toh nahi?
+        if(!nameVal || !phoneVal || !emailVal || !passVal) {
+            alert("Bhai, saari details bharna zaroori hai!");
+            return;
+        }
 
-if(verifyOtpBtn) {
-    verifyOtpBtn.addEventListener('click', () => {
-        window.confirmationResult.confirm(otpInput.value).then((result) => {
-            alert("Login Success!");
-            location.reload();
-        }).catch((error) => {
-            alert("Galat OTP!");
+        // Check 2: Password lamba hona chahiye
+        if(passVal.length < 6) {
+            alert("Password kam se kam 6 akshar ka hona chahiye!");
+            return;
+        }
+
+        registerBtn.innerText = "Processing...";
+
+        // Step 1: Naya Account Create Karne ki Koshish
+        auth.createUserWithEmailAndPassword(emailVal, passVal)
+        .then((userCredential) => {
+            const userId = userCredential.user.uid;
+            
+            // Step 2: Name aur Phone ko naye Database (Firestore) mein save karna
+            db.collection("users").doc(userId).set({
+                name: nameVal,
+                phone: phoneVal,
+                email: emailVal,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            .then(() => {
+                alert("Registration Successful! Swagat hai Padhai Pilot mein.");
+                loginModal.classList.remove('active');
+                registerBtn.innerText = "Register / Login";
+                // Login hone ke baad button ka text change kar do
+                if(loginBtn) loginBtn.innerHTML = '<i class="fa-solid fa-user-check"></i> My Profile';
+            });
+        })
+        .catch((error) => {
+            // Agar Email pehle se register hai, toh seedha Login kara do
+            if(error.code === 'auth/email-already-in-use') {
+                auth.signInWithEmailAndPassword(emailVal, passVal)
+                .then(() => {
+                    alert("Welcome Back! Login Successful.");
+                    loginModal.classList.remove('active');
+                    registerBtn.innerText = "Register / Login";
+                    if(loginBtn) loginBtn.innerHTML = '<i class="fa-solid fa-user-check"></i> My Profile';
+                })
+                .catch((loginError) => {
+                    alert("Galat Password! Kripya sahi password daalein.");
+                    registerBtn.innerText = "Register / Login";
+                });
+            } else {
+                alert("Error: " + error.message);
+                registerBtn.innerText = "Register / Login";
+            }
         });
     });
 }
