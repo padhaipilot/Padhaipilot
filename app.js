@@ -35,7 +35,7 @@ navItems.forEach(item => {
   });
 });
 
-// 3. LOGIN MODAL LOGIC (Open / Close)
+// 3. LOGIN MODAL LOGIC
 const loginBtn = document.querySelector('.login-btn');
 const loginModal = document.getElementById('loginModal');
 const closeModal = document.getElementById('closeModal');
@@ -112,7 +112,6 @@ if(registerBtn) {
                 alert("Registration Successful! Swagat hai Padhai Pilot mein.");
                 loginModal.classList.remove('active');
                 registerBtn.innerText = "Register / Login";
-                // Login hone ke baad button ka text change kar do
                 if(loginBtn) loginBtn.innerHTML = '<i class="fa-solid fa-user-check"></i> My Profile';
             });
         })
