@@ -10,21 +10,23 @@
   
   <style>
     :root {
-      --bg: #F4F7FB; /* Aankhon ko aaram dene wala soft off-white/gray */
-      --card: #FFFFFF; /* Cards white rahenge */
-      --primary: #5A67D8; /* Soft Indigo/Purple */
+      /* Soft Eye-Care Colors */
+      --bg: #F4F7FB; 
+      --card: #FFFFFF; 
+      --primary: #5A67D8; 
       --primary-light: #EEF2FF;
-      --text-main: #1E293B; /* Pure black nahi, dark navy slate */
-      --text-muted: #64748B; /* Soft gray for subtitles */
+      --text-main: #1E293B; 
+      --text-muted: #64748B; 
       --border: #E2E8F0;
       --green: #10B981;
       --orange: #F59E0B;
+      --blue: #3B82F6;
     }
     
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
     body { background-color: var(--bg); color: var(--text-main); overflow-x: hidden; }
 
-    /* ================= SIDEBAR ================= */
+    /* ================= SIDEBAR (Padhai Pilot Original) ================= */
     .sidebar { width: 260px; height: 100vh; background: var(--card); position: fixed; padding: 25px 20px; border-right: 1px solid var(--border); display: flex; flex-direction: column; z-index: 100; }
     .logo { display: flex; align-items: center; gap: 12px; font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 35px; padding-left: 10px; }
     
@@ -33,14 +35,11 @@
     .nav-item.active, .nav-item:hover { background: var(--primary-light); color: var(--primary); }
     .nav-item i { font-size: 20px; width: 24px; text-align: center; }
 
-    /* Sidebar Widgets (Premium & AI) */
-    .sidebar-widget { background: #FFFAF0; border: 1px solid #FDE68A; padding: 15px; border-radius: 12px; text-align: center; margin-bottom: 15px; }
+    /* Go Premium Widget */
+    .sidebar-widget { background: #FFFAF0; border: 1px solid #FDE68A; padding: 15px; border-radius: 12px; text-align: center; margin-top: auto; margin-bottom: 10px; }
     .sidebar-widget h4 { font-size: 14px; margin-bottom: 5px; color: #D97706; display: flex; align-items: center; justify-content: center; gap: 8px; }
     .sidebar-widget p { font-size: 11px; color: var(--text-muted); margin-bottom: 10px; }
     .sidebar-widget .btn { background: var(--primary); color: white; border: none; padding: 8px 15px; border-radius: 8px; font-size: 12px; width: 100%; cursor: pointer; font-weight: 600; }
-    
-    .ai-widget { background: var(--primary-light); border-color: #C7D2FE; }
-    .ai-widget h4 { color: var(--primary); }
 
     /* ================= MAIN CONTENT ================= */
     .main-content { margin-left: 260px; padding: 30px 40px; }
@@ -52,7 +51,7 @@
     .header-right { display: flex; align-items: center; gap: 20px; }
     .bell-icon { position: relative; font-size: 22px; color: var(--text-main); cursor: pointer; }
     .bell-icon .badge { position: absolute; top: -5px; right: -5px; background: #EF4444; color: white; font-size: 10px; font-weight: bold; width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid var(--bg); }
-    .user-avatar-small { width: 40px; height: 40px; background: #CBD5E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; color: white; overflow: hidden; }
+    .user-avatar-small { width: 40px; height: 40px; background: #CBD5E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; color: white; overflow: hidden; cursor: pointer; border: 2px solid var(--border); }
 
     /* ================= PREMIUM BANNER ================= */
     .banner { background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%); border-radius: 20px; padding: 30px 40px; color: white; display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; box-shadow: 0 10px 25px rgba(90, 103, 216, 0.2); }
@@ -65,7 +64,7 @@
     .edit-btn { background: transparent; border: 1px solid white; color: white; padding: 10px 20px; border-radius: 10px; font-weight: 600; cursor: pointer; transition: 0.3s; }
     .edit-btn:hover { background: white; color: var(--primary); }
 
-    /* ================= STATS GRID ================= */
+    /* ================= STATS GRID (Padhai Pilot Metrics) ================= */
     .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px; }
     .stat-card { background: var(--card); padding: 20px; border-radius: 16px; border: 1px solid var(--border); display: flex; align-items: center; gap: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
     .icon-box { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
@@ -77,7 +76,7 @@
     .stat-details p { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
     .trend { font-size: 11px; font-weight: 600; color: var(--green); display: flex; align-items: center; gap: 3px; }
 
-    /* ================= QUICK ACTIONS ================= */
+    /* ================= QUICK ACTIONS (Padhai Pilot Actions) ================= */
     .section-title { font-size: 18px; font-weight: 700; margin-bottom: 15px; color: var(--text-main); }
     .quick-actions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px; }
     .qa-card { background: var(--card); padding: 15px; border-radius: 16px; border: 1px solid var(--border); display: flex; align-items: center; gap: 12px; cursor: pointer; transition: 0.3s; position: relative; }
@@ -87,7 +86,7 @@
     .qa-text p { font-size: 11px; color: var(--text-muted); }
     .qa-arrow { position: absolute; right: 15px; bottom: 15px; width: 24px; height: 24px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; opacity: 0.8; }
 
-    /* ================= BOTTOM GRID (Tests & Chart) ================= */
+    /* ================= BOTTOM GRID ================= */
     .bottom-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 25px; margin-bottom: 100px; }
     
     .panel { background: var(--card); padding: 25px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
@@ -105,19 +104,13 @@
     .t-rank { font-weight: 600; width: 15%; }
     .t-date { color: var(--text-muted); font-size: 12px; width: 15%; text-align: right; }
 
-    /* Motivation Banner */
-    .motivation { background: #FFFAF0; border: 1px solid #FDE68A; padding: 20px; border-radius: 16px; margin-top: 20px; display: flex; align-items: center; gap: 20px; }
-    .motivation i { font-size: 40px; color: #F59E0B; }
-    .motivation h4 { font-size: 16px; color: var(--text-main); }
-    .motivation p { font-size: 13px; color: var(--text-muted); }
-
-    /* Chart & Mini Stats */
+    /* Chart Area */
     .mini-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
     .mini-card { background: #F8FAFC; padding: 15px; border-radius: 12px; border: 1px solid var(--border); }
     .mini-card p { font-size: 12px; color: var(--text-muted); margin-bottom: 5px; }
     .mini-card h3 { font-size: 20px; color: var(--text-main); }
 
-    /* ================= MOBILE NAVIGATION ================= */
+    /* ================= MOBILE NAVIGATION (Padhai Pilot Original) ================= */
     .mobile-nav { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--card); border-top: 1px solid var(--border); justify-content: space-around; padding: 10px 10px 20px 10px; z-index: 1000; box-shadow: 0 -5px 20px rgba(0,0,0,0.03); }
     .mobile-nav a { color: var(--text-muted); text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 11px; font-weight: 600; gap: 5px; }
     .mobile-nav a.active { color: var(--primary); }
@@ -147,27 +140,22 @@
 </head>
 <body>
 
-  <!-- SIDEBAR -->
+  <!-- ================= ORIGINAL Padhai Pilot SIDEBAR ================= -->
   <aside class="sidebar">
     <div class="logo"><i class="fa-solid fa-graduation-cap"></i> Padhai Pilot</div>
     <div class="nav-menu">
-      <a href="#" class="nav-item active"><i class="fa-solid fa-table-cells-large"></i> Dashboard</a>
-      <a href="#" class="nav-item"><i class="fa-solid fa-clipboard-list"></i> Mock Tests</a>
-      <a href="#" class="nav-item"><i class="fa-solid fa-clock-rotate-left"></i> Previous Tests</a>
-      <a href="#" class="nav-item"><i class="fa-solid fa-file-lines"></i> Notes</a>
+      <a href="index.html" class="nav-item"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="#" class="nav-item active"><i class="fa-solid fa-table-columns"></i> Dashboard</a>
+      <a href="#" class="nav-item"><i class="fa-solid fa-book-open"></i> My Courses</a>
+      <a href="#" class="nav-item"><i class="fa-solid fa-file-pen"></i> Mock Tests</a>
+      <a href="#" class="nav-item"><i class="fa-solid fa-chart-pie"></i> Analytics</a>
       <a href="#" class="nav-item"><i class="fa-solid fa-gear"></i> Settings</a>
     </div>
     
     <div class="sidebar-widget">
       <h4><i class="fa-solid fa-crown"></i> Go Premium</h4>
-      <p>Unlock all features & boost your preparation.</p>
+      <p>Unlock structured courses & materials.</p>
       <button class="btn">Upgrade Now</button>
-    </div>
-    
-    <div class="sidebar-widget ai-widget">
-      <h4><i class="fa-solid fa-robot"></i> Need Help?</h4>
-      <p>Ask your doubt instantly to AI.</p>
-      <button class="btn">Ask AI</button>
     </div>
   </aside>
 
@@ -177,16 +165,17 @@
     <!-- Header -->
     <div class="header">
       <div class="header-left">
-        <h2>Good Evening, <span id="headerName">Student</span>! 👋</h2>
-        <p>Keep learning, stay consistent and achieve your goals.</p>
+        <h2>Dashboard</h2>
+        <p>Welcome back! Keep learning, stay consistent.</p>
       </div>
       <div class="header-right">
         <div class="bell-icon">
           <i class="fa-regular fa-bell"></i>
           <span class="badge">3</span>
         </div>
-        <div class="user-avatar-small" id="headerLogoutBtn" title="Click to Logout" style="cursor: pointer;">
-          <i class="fa-solid fa-user"></i>
+        <!-- Logout icon click to trigger Firebase sign out -->
+        <div class="user-avatar-small" id="headerLogoutBtn" title="Click to Logout">
+          <i class="fa-solid fa-power-off" style="font-size: 16px;"></i>
         </div>
       </div>
     </div>
@@ -204,10 +193,10 @@
           </div>
         </div>
       </div>
-      <button class="edit-btn">Edit Profile</button>
+      <button class="edit-btn" onclick="alert('Edit Profile Page/Popup aage banega!')">Edit Profile</button>
     </div>
 
-    <!-- Stats Grid -->
+    <!-- Stats Grid (Padhai Pilot Original Metrics) -->
     <div class="stats-grid">
       <div class="stat-card">
         <div class="icon-box icon-purple"><i class="fa-solid fa-file-lines"></i></div>
@@ -236,19 +225,19 @@
       <div class="stat-card">
         <div class="icon-box icon-blue"><i class="fa-solid fa-star"></i></div>
         <div class="stat-details">
-          <p>Total Points</p>
+          <p>Total XP Points</p>
           <h3>1250</h3>
           <span class="trend"><i class="fa-solid fa-arrow-up"></i> 150 this week</span>
         </div>
       </div>
     </div>
 
-    <!-- Quick Actions -->
+    <!-- Quick Actions (Padhai Pilot Original Actions) -->
     <h3 class="section-title">Quick Actions</h3>
     <div class="quick-actions">
       <div class="qa-card">
         <div class="qa-icon icon-purple"><i class="fa-solid fa-play"></i></div>
-        <div class="qa-text"><h4>Continue Last Test</h4><p>Resume your last test</p></div>
+        <div class="qa-text"><h4>Continue Study</h4><p>Resume your course</p></div>
         <div class="qa-arrow"><i class="fa-solid fa-arrow-right"></i></div>
       </div>
       <div class="qa-card">
@@ -257,13 +246,13 @@
         <div class="qa-arrow"><i class="fa-solid fa-arrow-right"></i></div>
       </div>
       <div class="qa-card">
-        <div class="qa-icon icon-orange"><i class="fa-solid fa-clipboard-list"></i></div>
-        <div class="qa-text"><h4>Previous Tests</h4><p>View your attempts</p></div>
+        <div class="qa-icon icon-orange"><i class="fa-solid fa-lock-open"></i></div>
+        <div class="qa-text"><h4>Change Password</h4><p>Update security</p></div>
         <div class="qa-arrow"><i class="fa-solid fa-arrow-right"></i></div>
       </div>
       <div class="qa-card">
         <div class="qa-icon icon-blue"><i class="fa-solid fa-book"></i></div>
-        <div class="qa-text"><h4>My Notes</h4><p>View your saved notes</p></div>
+        <div class="qa-text"><h4>My Notes</h4><p>View saved PDFs</p></div>
         <div class="qa-arrow"><i class="fa-solid fa-arrow-right"></i></div>
       </div>
     </div>
@@ -274,7 +263,7 @@
       <div>
         <div class="panel">
           <div class="panel-header">
-            <h3 class="section-title" style="margin:0;">Recent Tests</h3>
+            <h3 class="section-title" style="margin:0;">Recent Activity</h3>
             <a href="#" class="view-all">View All</a>
           </div>
           <div class="test-list">
@@ -282,25 +271,17 @@
               <div class="t-name">Test Name</div><div class="t-score">Score</div><div class="t-acc">Accuracy</div><div class="t-rank">Rank</div><div class="t-date">Date</div>
             </div>
             <div class="test-item">
-              <div class="t-name"><i class="fa-solid fa-file-lines t-icon"></i> JEE Main Mock #15</div>
+              <div class="t-name"><i class="fa-solid fa-file-lines t-icon"></i> SSC CGL Mock #15</div>
               <div class="t-score">78/100</div><div class="t-acc">78%</div><div class="t-rank">#342</div><div class="t-date">16 May</div>
             </div>
             <div class="test-item">
-              <div class="t-name"><i class="fa-solid fa-file-lines t-icon" style="color:#10B981; background:#D1FAE5;"></i> Physics Mock #8</div>
+              <div class="t-name"><i class="fa-solid fa-file-lines t-icon" style="color:#10B981; background:#D1FAE5;"></i> UP Police Mock #8</div>
               <div class="t-score">82/100</div><div class="t-acc">82%</div><div class="t-rank">#298</div><div class="t-date">14 May</div>
             </div>
             <div class="test-item">
-              <div class="t-name"><i class="fa-solid fa-file-lines t-icon" style="color:#F59E0B; background:#FEF3C7;"></i> Chemistry Mock #7</div>
+              <div class="t-name"><i class="fa-solid fa-file-lines t-icon" style="color:#F59E0B; background:#FEF3C7;"></i> Railway RRB Test #7</div>
               <div class="t-score">65/100</div><div class="t-acc">65%</div><div class="t-rank">#512</div><div class="t-date">12 May</div>
             </div>
-          </div>
-        </div>
-        
-        <div class="motivation">
-          <i class="fa-solid fa-trophy"></i>
-          <div>
-            <h4>Keep it up! You're doing great.</h4>
-            <p>Consistency today, success tomorrow. 🚀</p>
           </div>
         </div>
       </div>
@@ -317,7 +298,7 @@
           <div class="mini-card">
             <p>Best Accuracy</p>
             <h3>85%</h3>
-            <p style="font-size:10px; margin-top:3px;">On 14 May 2024</p>
+            <p style="font-size:10px; margin-top:3px;">On 14 May</p>
           </div>
           <div class="mini-card">
             <p>Tests This Week</p>
@@ -330,12 +311,11 @@
 
   </main>
 
-  <!-- MOBILE BOTTOM NAVIGATION -->
+  <!-- ================= ORIGINAL Padhai Pilot MOBILE NAV ================= -->
   <nav class="mobile-nav">
     <a href="index.html"><i class="fa-solid fa-house"></i><span>Home</span></a>
-    <a href="#"><i class="fa-solid fa-clipboard-list"></i><span>Mock Tests</span></a>
-    <a href="#"><i class="fa-solid fa-clock-rotate-left"></i><span>Previous</span></a>
-    <a href="#"><i class="fa-solid fa-file-lines"></i><span>Notes</span></a>
+    <a href="#"><i class="fa-solid fa-book-open"></i><span>Courses</span></a>
+    <a href="#"><i class="fa-solid fa-clipboard-list"></i><span>Tests</span></a>
     <a href="#" class="active"><i class="fa-regular fa-user"></i><span>Profile</span></a>
   </nav>
 
@@ -345,7 +325,6 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 
   <script>
-    // Firebase Setup
     const firebaseConfig = {
       apiKey: "AIzaSyDHo4a317WqzvSFB31X9RdbBksUNb81fZM",
       authDomain: "padhaipilot-1dcae.firebaseapp.com",
@@ -359,15 +338,12 @@
     const auth = firebase.auth();
     const db = firebase.firestore();
 
-    // Load User Data
     auth.onAuthStateChanged((user) => {
       if (user) {
         db.collection("users").doc(user.uid).get().then((doc) => {
           if (doc.exists) {
-            const firstName = doc.data().name.split(" ")[0]; // Sirf pehla naam
             document.getElementById('dashName').innerText = doc.data().name;
-            document.getElementById('headerName').innerText = firstName;
-            document.getElementById('dashEmail').innerText = doc.data().email;
+            document.getElementById('dashEmail').innerText = doc.data().phone ? "+91 " + doc.data().phone : doc.data().email;
           }
         });
       } else {
@@ -375,14 +351,12 @@
       }
     });
 
-    // Logout via small avatar click
     document.getElementById('headerLogoutBtn').addEventListener('click', () => {
-      if(confirm("Are you sure you want to logout?")) {
+      if(confirm("Bhai, Logout karna hai?")) {
         auth.signOut().then(() => { window.location.href = "index.html"; });
       }
     });
 
-    // Draw Chart exactly like screenshot
     const ctx = document.getElementById('progressChart').getContext('2d');
     new Chart(ctx, {
       type: 'line',
