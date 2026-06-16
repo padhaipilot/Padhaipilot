@@ -25,10 +25,16 @@ if(darkModeToggle) {
     });
 }
 
-// 2. MOBILE BOTTOM NAVIGATION LOGIC
+// 2. MOBILE BOTTOM NAVIGATION LOGIC (Bug Fixed here)
 const navItems = document.querySelectorAll('.bottom-nav .nav-item:not(.center-btn)');
 navItems.forEach(item => {
   item.addEventListener('click', function(e) {
+    // Agar link profile.html ya index.html par le ja raha hai, toh use mat roko
+    const link = this.getAttribute('href');
+    if(link === 'profile.html' || link === 'index.html') {
+        return; // Rasta clear hai, page change hone do
+    }
+    
     e.preventDefault();
     navItems.forEach(nav => nav.classList.remove('active'));
     this.classList.add('active');
@@ -48,68 +54,49 @@ const firebaseConfig = {
   measurementId: "G-7MTYEEHHMT"
 };
 
-// Initialize Firebase
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
 }
 const auth = firebase.auth();
 const db = firebase.firestore();
 
-// UI Elements Get Karna
-const headerLoginBtn = document.getElementById('headerLoginBtn');
+// UI Elements
+const headerLoginBtn = document.querySelector('.login-btn'); 
 const loginModal = document.getElementById('loginModal');
 const closeModal = document.getElementById('closeModal');
-const profileModal = document.getElementById('profileModal');
-const closeProfileModal = document.getElementById('closeProfileModal');
 
 const registerBtn = document.getElementById('registerBtn');
 const regName = document.getElementById('regName');
 const regPhone = document.getElementById('regPhone');
 const regEmail = document.getElementById('regEmail');
 const regPass = document.getElementById('regPass');
-
-const logoutBtn = document.getElementById('logoutBtn');
 const forgotPassLink = document.getElementById('forgotPassLink');
-const displayUserName = document.getElementById('displayUserName');
-const displayUserEmail = document.getElementById('displayUserEmail');
 
 // Modals Close Logic
 if(closeModal) closeModal.addEventListener('click', () => loginModal.classList.remove('active'));
-if(closeProfileModal) closeProfileModal.addEventListener('click', () => profileModal.classList.remove('active'));
 window.addEventListener('click', (e) => {
     if (e.target === loginModal) loginModal.classList.remove('active');
-    if (e.target === profileModal) profileModal.classList.remove('active');
 });
 
 // ==========================================
-// AUTO-LOGIN CHECKER (Bahut Zaroori)
+// AUTO-LOGIN CHECKER (Redirect to Profile)
 // ==========================================
 auth.onAuthStateChanged((user) => {
     if (user) {
-        // Agar user pehle se login hai
+        // User login hai -> Button Dashboard ban jayega
         if(headerLoginBtn) {
-headerLoginBtn.innerHTML = '<i class="fa-solid fa-table-columns"></i> Dashboard';
-headerLoginBtn.onclick = () => {
-    window.location.href = "profile.html";
-};
+            headerLoginBtn.innerHTML = '<i class="fa-solid fa-table-columns"></i> Dashboard';
+            headerLoginBtn.onclick = () => {
+                window.location.href = "profile.html"; // Seedha naye page par bhejega
+            };
         }
-        
-        // Database se naam nikal kar Dashboard mein dikhana
-        db.collection("users").doc(user.uid).get().then((doc) => {
-            if (doc.exists) {
-                displayUserName.innerText = "Hi, " + doc.data().name;
-                displayUserEmail.innerText = doc.data().email;
-            } else {
-                displayUserName.innerText = "Student";
-                displayUserEmail.innerText = user.email;
-            }
-        }).catch((error) => console.log("Data fetch error: ", error));
-
     } else {
-        // Agar user login nahi hai
+        // User login nahi hai -> Button Login Modal kholega
         if(headerLoginBtn) {
             headerLoginBtn.innerHTML = '<i class="fa-regular fa-user"></i> Login';
-            headerLoginBtn.onclick = () => loginModal.classList.add('active'); // Login box khulega
+            headerLoginBtn.onclick = () => {
+                loginModal.classList.add('active');
+            };
         }
     }
 });
@@ -128,7 +115,6 @@ if(registerBtn) {
         
         registerBtn.innerText = "Processing...";
 
-        // 1. Naya account banana ki koshish
         auth.createUserWithEmailAndPassword(emailVal, passVal)
         .then((userCredential) => {
             const userId = userCredential.user.uid;
@@ -139,18 +125,17 @@ if(registerBtn) {
                 createdAt: firebase.firestore.FieldValue.serverTimestamp()
             }).then(() => {
                 loginModal.classList.remove('active');
-                registerBtn.innerText = "Register / Login";
                 alert("Welcome to Padhai Pilot!");
+                window.location.href = "profile.html"; // Register hote hi Dashboard par bhej do
             });
         })
         .catch((error) => {
-            // 2. Agar account hai, toh Login karo
             if(error.code === 'auth/email-already-in-use') {
                 auth.signInWithEmailAndPassword(emailVal, passVal)
                 .then(() => {
                     loginModal.classList.remove('active');
-                    registerBtn.innerText = "Register / Login";
                     alert("Welcome Back!");
+                    window.location.href = "profile.html"; // Login hote hi Dashboard par bhej do
                 })
                 .catch((loginError) => {
                     alert("Galat Password!");
@@ -180,18 +165,5 @@ if(forgotPassLink) {
         auth.sendPasswordResetEmail(emailVal)
         .then(() => alert("Password reset link aapki Email par bhej diya gaya hai!"))
         .catch((error) => alert("Error: " + error.message));
-    });
-}
-
-// ==========================================
-// LOGOUT ACTION
-// ==========================================
-if(logoutBtn) {
-    logoutBtn.addEventListener('click', () => {
-        auth.signOut().then(() => {
-            profileModal.classList.remove('active');
-            alert("Aap successfully Logout ho gaye hain.");
-            location.reload();
-        }).catch((error) => alert("Logout failed: " + error.message));
     });
 }
