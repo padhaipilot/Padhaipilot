@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Padhai Pilot - Explore Hub</title>
+  <title>Padhai Pilot - Ultimate Store</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
@@ -37,7 +37,7 @@
     .main-content { margin-left: 260px; padding: 30px 40px; padding-bottom: 120px; }
     
     /* HEADER */
-    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
     .header-left h2 { font-size: 24px; font-weight: 800; color: var(--text-main); }
     .header-left p { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
     .header-right { display: flex; align-items: center; gap: 20px; }
@@ -48,32 +48,30 @@
     .notif-btn .dot { position: absolute; top: -2px; right: -2px; width: 8px; height: 8px; background: var(--red); border-radius: 50%; }
     .user-avatar-small { width: 42px; height: 42px; background: var(--primary-light); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; border: 2px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
 
-    /* ================= 1. QUICK ACCESS ICONS ROW (New) ================= */
-    .quick-access-bar { display: flex; gap: 25px; overflow-x: auto; padding: 5px 5px 25px 5px; margin-bottom: 10px; scrollbar-width: none; }
+    /* HERO BANNER (Top placement) */
+    .hero-banner { background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%); border-radius: 24px; padding: 35px 45px; color: white; display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; box-shadow: 0 15px 35px rgba(79, 70, 229, 0.2); position: relative; overflow: hidden; }
+    .banner-badge { background: rgba(255, 255, 255, 0.2); padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.2); }
+    .banner-content { position: relative; z-index: 2; }
+    .banner-content h1 { font-size: 30px; font-weight: 800; margin-bottom: 8px; line-height: 1.2; }
+    .banner-content p { font-size: 14px; color: #E0E7FF; margin-bottom: 20px; max-width: 450px; }
+    .btn-live { background: white; color: var(--primary); padding: 10px 25px; border-radius: 12px; font-weight: 700; border: none; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s; }
+    .banner-icon-bg { font-size: 90px; color: rgba(255,255,255,0.12); position: absolute; right: 40px; transform: rotate(-10deg); }
+
+    /* QUICK ACCESS ICONS ROW (Below Banner) */
+    .quick-access-bar { display: flex; gap: 25px; overflow-x: auto; padding: 5px 5px 20px 5px; margin-bottom: 15px; scrollbar-width: none; }
     .quick-access-bar::-webkit-scrollbar { display: none; }
     .qa-item { display: flex; flex-direction: column; align-items: center; gap: 10px; min-width: 75px; cursor: pointer; transition: 0.3s; }
     .qa-icon-box { width: 65px; height: 65px; border-radius: 18px; display: flex; justify-content: center; align-items: center; font-size: 26px; color: white; box-shadow: 0 6px 15px rgba(0,0,0,0.08); transition: 0.3s; position: relative; overflow: hidden; }
-    .qa-icon-box::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 50%; background: rgba(255,255,255,0.15); } /* Glossy 3D effect */
-    .qa-item:hover .qa-icon-box { transform: translateY(-5px) scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.12); }
+    .qa-icon-box::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 50%; background: rgba(255,255,255,0.15); } 
+    .qa-item:hover .qa-icon-box { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.12); }
     .qa-item span { font-size: 12px; font-weight: 600; color: var(--text-main); text-align: center; line-height: 1.2; }
     
-    /* Icon Colors */
     .bg-ca-quiz { background: linear-gradient(135deg, #F59E0B, #D97706); }
     .bg-ca-mag { background: linear-gradient(135deg, #3B82F6, #2563EB); }
     .bg-live-test { background: linear-gradient(135deg, #10B981, #059669); }
     .bg-pyq { background: linear-gradient(135deg, #8B5CF6, #7C3AED); }
     .bg-ncert { background: linear-gradient(135deg, #EF4444, #DC2626); }
     .bg-shorts { background: linear-gradient(135deg, #EC4899, #DB2777); }
-
-    /* HERO BANNER */
-    .hero-banner { background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%); border-radius: 24px; padding: 35px 45px; color: white; display: flex; justify-content: space-between; align-items: center; margin-bottom: 35px; box-shadow: 0 15px 35px rgba(79, 70, 229, 0.2); position: relative; overflow: hidden; }
-    .banner-badge { background: rgba(255, 255, 255, 0.2); padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.2); }
-    .banner-content { position: relative; z-index: 2; }
-    .banner-content h1 { font-size: 30px; font-weight: 800; margin-bottom: 8px; line-height: 1.2; }
-    .banner-content p { font-size: 14px; color: #E0E7FF; margin-bottom: 20px; max-width: 450px; }
-    .btn-live { background: white; color: var(--primary); padding: 10px 25px; border-radius: 12px; font-weight: 700; border: none; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s; }
-    .btn-live:hover { transform: translateY(-2px); }
-    .banner-icon-bg { font-size: 90px; color: rgba(255,255,255,0.12); position: absolute; right: 40px; transform: rotate(-10deg); }
 
     /* SECTIONS GLOBAL */
     .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; margin-top: 35px; }
@@ -84,28 +82,34 @@
     .scroll-container { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 15px; scrollbar-width: none; }
     .scroll-container::-webkit-scrollbar { display: none; }
 
-    /* ================= 2. DAILY CA QUIZ CARDS (New) ================= */
+    /* 1. ENROLLED / ATTEMPTED SECTION */
+    .enrolled-card { min-width: 310px; max-width: 310px; background: var(--card); border-radius: 18px; border: 1px solid var(--border); padding: 20px; display: flex; flex-direction: column; gap: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.01); }
+    .ec-top { display: flex; gap: 15px; align-items: center; }
+    .ec-box { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: bold; }
+    .ec-title h4 { font-size: 15px; font-weight: 700; color: var(--text-main); }
+    .ec-title p { font-size: 12px; color: var(--text-muted); }
+    .progress-track { width: 100%; height: 6px; background: #F1F5F9; border-radius: 10px; margin-top: 5px; }
+    .progress-fill { height: 100%; background: var(--green); border-radius: 10px; }
+    .resume-btn { background: var(--primary-light); color: var(--primary); border: none; padding: 10px; border-radius: 10px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+
+    /* 2. DAILY CA QUIZ CARDS */
     .ca-card { min-width: 270px; max-width: 270px; background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); display: flex; flex-direction: column; transition: 0.3s; position: relative; overflow: hidden; }
-    .ca-card:hover { border-color: var(--orange); box-shadow: 0 10px 25px rgba(245, 158, 11, 0.1); transform: translateY(-3px); }
+    .ca-card:hover { border-color: var(--orange); transform: translateY(-3px); }
     .ca-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, #F59E0B, #FBBF24); }
-    
-    .ca-title { font-size: 17px; font-weight: 800; color: var(--text-main); margin-bottom: 12px; line-height: 1.4; }
+    .ca-title { font-size: 16px; font-weight: 800; color: var(--text-main); margin-bottom: 12px; line-height: 1.4; }
     .ca-meta { display: flex; gap: 15px; font-size: 12px; color: var(--text-muted); font-weight: 500; margin-bottom: 10px; }
     .ca-meta i { color: var(--orange); }
     .ca-attempts { font-size: 12px; color: var(--text-muted); margin-bottom: 18px; background: #FFFBEB; padding: 4px 10px; border-radius: 8px; display: inline-block; border: 1px solid #FEF3C7; }
     .ca-btn { background: #FBBF24; color: #78350F; width: 100%; border: none; padding: 12px; border-radius: 12px; font-weight: 800; font-size: 14px; cursor: pointer; transition: 0.3s; }
     .ca-btn:hover { background: #F59E0B; color: white; }
 
-    /* ================= 3. PREVIOUS YEAR PAPERS CARDS (New Book Style) ================= */
+    /* 3. PREVIOUS YEAR PAPERS CARDS (Book Style) */
     .pyq-card { min-width: 140px; max-width: 140px; background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 18px 15px; text-align: center; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; align-items: center; }
-    .pyq-card:hover { border-color: var(--primary); box-shadow: 0 10px 20px rgba(67, 56, 202, 0.08); transform: translateY(-5px); }
-    
-    /* The Book Design */
+    .pyq-card:hover { border-color: var(--primary); transform: translateY(-5px); }
     .pyq-book { width: 90px; height: 120px; margin: 0 auto 12px auto; border-radius: 4px 14px 14px 4px; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; color: white; position: relative; box-shadow: inset 4px 0 8px rgba(0,0,0,0.15), 5px 5px 15px rgba(0,0,0,0.1); }
     .pyq-bookmark { position: absolute; top: 0; right: 15px; width: 14px; height: 24px; background: #FBBF24; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 75%, 0 100%); }
-    .pyq-book::after { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: rgba(255,255,255,0.2); } /* Book binding crease */
+    .pyq-book::after { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: rgba(255,255,255,0.2); } 
     
-    /* Book Colors */
     .book-green { background: linear-gradient(135deg, #10B981, #059669); }
     .book-purple { background: linear-gradient(135deg, #8B5CF6, #6D28D9); }
     .book-blue { background: linear-gradient(135deg, #3B82F6, #1D4ED8); }
@@ -115,15 +119,40 @@
     .pyq-card h4 { font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 2px; }
     .pyq-card p { font-size: 11px; font-weight: 500; color: var(--text-muted); }
 
-    /* ================= ENROLLED / STORE CARDS (Kept intact for full experience) ================= */
-    .enrolled-card { min-width: 310px; max-width: 310px; background: var(--card); border-radius: 18px; border: 1px solid var(--border); padding: 20px; display: flex; flex-direction: column; gap: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.01); }
-    .ec-top { display: flex; gap: 15px; align-items: center; }
-    .ec-box { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: bold; }
-    .ec-title h4 { font-size: 15px; font-weight: 700; color: var(--text-main); }
-    .ec-title p { font-size: 12px; color: var(--text-muted); }
-    .progress-track { width: 100%; height: 6px; background: #F1F5F9; border-radius: 10px; margin-top: 5px; }
-    .progress-fill { height: 100%; background: var(--green); border-radius: 10px; }
-    .resume-btn { background: var(--primary-light); color: var(--primary); border: none; padding: 10px; border-radius: 10px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+    /* 4, 5, 6. STORE CARDS (Trends, Free, Upcoming) */
+    .store-card { min-width: 275px; max-width: 275px; background: var(--card); border-radius: 18px; border: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.01); }
+    .store-card:hover { transform: translateY(-5px); border-color: rgba(67, 56, 202, 0.2); box-shadow: 0 12px 25px rgba(67, 56, 202, 0.08); }
+    
+    .card-thumb { height: 100px; padding: 15px; display: flex; justify-content: space-between; align-items: flex-start; position: relative; }
+    .thumb-ssc { background: linear-gradient(135deg, #4F46E5, #6366F1); }
+    .thumb-railway { background: linear-gradient(135deg, #059669, #10B981); }
+    .thumb-police { background: linear-gradient(135deg, #EA580C, #F97316); }
+    .thumb-bank { background: linear-gradient(135deg, #2563EB, #3B82F6); }
+    .thumb-free { background: linear-gradient(135deg, #7C3AED, #9333EA); }
+    .thumb-prebook { background: linear-gradient(135deg, #1E293B, #475569); }
+    
+    .card-tag { background: rgba(255, 255, 255, 0.22); color: white; padding: 4px 10px; border-radius: 12px; font-size: 10px; font-weight: 700; border: 1px solid rgba(255,255,255,0.2); }
+    .card-logo-badge { width: 38px; height: 38px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    
+    .card-body { padding: 18px; display: flex; flex-direction: column; flex-grow: 1; }
+    .card-body h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; color: var(--text-main); }
+    .meta-tags { display: flex; gap: 6px; margin-bottom: 15px; flex-wrap: wrap; }
+    .meta-tags span { background: #F8FAFC; border: 1px solid var(--border); padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 500; color: var(--text-muted); }
+    
+    .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--border); padding-top: 12px; margin-top: auto; }
+    .price-box { display: flex; flex-direction: column; }
+    .old-price { font-size: 11px; text-decoration: line-through; color: #94A3B8; font-weight: 500; }
+    .new-price { font-size: 16px; font-weight: 800; color: var(--text-main); }
+    .action-btn { background: white; color: var(--primary); border: 1px solid var(--primary); padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+    .store-card:hover .action-btn { background: var(--primary); color: white; border-color: var(--primary); }
+
+    /* 7. ALL EXAMS GRID */
+    .exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
+    .exam-cat-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 22px 15px; text-align: center; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .exam-cat-card:hover { border-color: var(--primary); box-shadow: 0 8px 20px rgba(67, 56, 202, 0.06); transform: translateY(-4px); }
+    .exam-logo-box { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; transition: 0.3s; }
+    .exam-cat-card:hover .exam-logo-box { background: var(--primary) !important; color: white !important; }
+    .exam-cat-card h4 { font-size: 14px; font-weight: 700; color: var(--text-main); }
 
     /* MOBILE NAVIGATION */
     .mobile-nav { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--card); border-top: 1px solid var(--border); justify-content: space-around; padding: 10px 10px 18px 10px; z-index: 1000; box-shadow: 0 -5px 15px rgba(0,0,0,0.02); border-top-left-radius: 20px; border-top-right-radius: 20px; }
@@ -136,11 +165,13 @@
       .main-content { margin-left: 0; padding: 20px; padding-bottom: 100px; }
       .mobile-nav { display: flex; }
       .search-bar { display: none; }
+      .exam-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
 
+  <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="logo"><i class="fa-solid fa-graduation-cap"></i> Padhai Pilot</div>
     <div class="nav-menu">
@@ -152,8 +183,10 @@
     </div>
   </aside>
 
+  <!-- MAIN AREA -->
   <main class="main-content">
     
+    <!-- HEADER -->
     <div class="header">
       <div class="header-left">
         <h2>Explore Portal 🚀</h2>
@@ -173,40 +206,7 @@
       </div>
     </div>
 
-    <div class="quick-access-bar">
-      
-      <div class="qa-item">
-        <div class="qa-icon-box bg-ca-quiz"><i class="fa-solid fa-clipboard-question"></i></div>
-        <span>C A<br>Quiz</span>
-      </div>
-      
-      <div class="qa-item">
-        <div class="qa-icon-box bg-ca-mag"><i class="fa-solid fa-book-open"></i></div>
-        <span>C A<br>Magazine</span>
-      </div>
-      
-      <div class="qa-item">
-        <div class="qa-icon-box bg-live-test"><i class="fa-solid fa-stopwatch"></i></div>
-        <span>Live<br>Test</span>
-      </div>
-
-      <div class="qa-item">
-        <div class="qa-icon-box bg-shorts"><i class="fa-solid fa-bolt"></i></div>
-        <span>Live<br>Quiz</span>
-      </div>
-
-      <div class="qa-item">
-        <div class="qa-icon-box bg-pyq"><i class="fa-solid fa-box-archive"></i></div>
-        <span>Previous<br>Papers</span>
-      </div>
-
-      <div class="qa-item">
-        <div class="qa-icon-box bg-ncert"><i class="fa-solid fa-book-journal-whills"></i></div>
-        <span>NCERT<br>Notes</span>
-      </div>
-
-    </div>
-
+    <!-- 1. DYNAMIC HERO BANNER (TOP PLACEMENT) -->
     <div class="hero-banner">
       <div class="banner-content">
         <div class="banner-badge"><i class="fa-solid fa-satellite-dish"></i> Live Contest</div>
@@ -217,108 +217,25 @@
       <i class="fa-solid fa-trophy banner-icon-bg"></i>
     </div>
 
-    <div class="section-header" style="margin-top: 0;">
-      <h3><i class="fa-solid fa-bolt" style="color: var(--orange);"></i> Current Affairs Quiz</h3>
-      <a href="#" class="view-all">See All ></a>
-    </div>
-    <div class="scroll-container">
-      
-      <div class="ca-card">
-        <div class="ca-title">19 June 2026 Daily Current Affairs Quiz (Morning)</div>
-        <div class="ca-meta">
-          <span><i class="fa-regular fa-clock"></i> 10 mins</span>
-          <span><i class="fa-regular fa-circle-question"></i> 10 Ques</span>
-        </div>
-        <div class="ca-attempts">443 Attempts in 12 hrs</div>
-        <button class="ca-btn">Start Now</button>
-      </div>
-
-      <div class="ca-card">
-        <div class="ca-title">18 June 2026 Daily Current Affairs Quiz (Evening)</div>
-        <div class="ca-meta">
-          <span><i class="fa-regular fa-clock"></i> 10 mins</span>
-          <span><i class="fa-regular fa-circle-question"></i> 10 Ques</span>
-        </div>
-        <div class="ca-attempts">847 Attempts in 12 hrs</div>
-        <button class="ca-btn">Start Now</button>
-      </div>
-
-      <div class="ca-card">
-        <div class="ca-title">18 June 2026 Daily Current Affairs Quiz (Morning)</div>
-        <div class="ca-meta">
-          <span><i class="fa-regular fa-clock"></i> 10 mins</span>
-          <span><i class="fa-regular fa-circle-question"></i> 10 Ques</span>
-        </div>
-        <div class="ca-attempts">1,250 Attempts in 24 hrs</div>
-        <button class="ca-btn">Start Now</button>
-      </div>
-
+    <!-- 2. QUICK ACCESS ICONS ROW (BELOW BANNER) -->
+    <div class="quick-access-bar">
+      <div class="qa-item"><div class="qa-icon-box bg-ca-quiz"><i class="fa-solid fa-clipboard-question"></i></div><span>C A<br>Quiz</span></div>
+      <div class="qa-item"><div class="qa-icon-box bg-ca-mag"><i class="fa-solid fa-book-open"></i></div><span>C A<br>Magazine</span></div>
+      <div class="qa-item"><div class="qa-icon-box bg-live-test"><i class="fa-solid fa-stopwatch"></i></div><span>Live<br>Test</span></div>
+      <div class="qa-item"><div class="qa-icon-box bg-shorts"><i class="fa-solid fa-bolt"></i></div><span>Live<br>Quiz</span></div>
+      <div class="qa-item"><div class="qa-icon-box bg-pyq"><i class="fa-solid fa-box-archive"></i></div><span>Previous<br>Papers</span></div>
+      <div class="qa-item"><div class="qa-icon-box bg-ncert"><i class="fa-solid fa-book-journal-whills"></i></div><span>NCERT<br>Notes</span></div>
     </div>
 
-    <div class="section-header">
-      <h3><i class="fa-solid fa-book-bookmark" style="color: var(--primary);"></i> Previous Year Papers</h3>
-      <a href="#" class="view-all">See All ></a>
-    </div>
-    <div class="scroll-container">
-      
-      <div class="pyq-card">
-        <div class="pyq-book book-green">
-          <div class="pyq-bookmark"></div>
-          2025
-        </div>
-        <h4>All Exams</h4>
-        <p>24 Tests PDF</p>
-      </div>
-
-      <div class="pyq-card">
-        <div class="pyq-book book-purple">
-          <div class="pyq-bookmark"></div>
-          2024
-        </div>
-        <h4>All Exams</h4>
-        <p>39 Tests PDF</p>
-      </div>
-
-      <div class="pyq-card">
-        <div class="pyq-book book-orange">
-          <div class="pyq-bookmark"></div>
-          2023
-        </div>
-        <h4>All Exams</h4>
-        <p>42 Tests PDF</p>
-      </div>
-
-      <div class="pyq-card">
-        <div class="pyq-book book-blue">
-          <div class="pyq-bookmark"></div>
-          2022
-        </div>
-        <h4>All Exams</h4>
-        <p>45 Tests PDF</p>
-      </div>
-
-      <div class="pyq-card">
-        <div class="pyq-book book-red">
-          <div class="pyq-bookmark"></div>
-          2021
-        </div>
-        <h4>All Exams</h4>
-        <p>50 Tests PDF</p>
-      </div>
-
-    </div>
-
-    <div class="section-header">
+    <!-- 3. CONTINUE PRACTICE (ENROLLED) -->
+    <div class="section-header" style="margin-top: 10px;">
       <h3><i class="fa-solid fa-circle-play" style="color: var(--primary);"></i> Continue Practice</h3>
     </div>
     <div class="scroll-container">
       <div class="enrolled-card">
         <div class="ec-top">
           <div class="ec-box" style="background: #FFE4E6; color: #E11D48;"><i class="fa-solid fa-shield-halved"></i></div>
-          <div class="ec-title">
-            <h4>UP Police Constable 2026</h4>
-            <p>Maha Mock Test Series</p>
-          </div>
+          <div class="ec-title"><h4>UP Police Constable 2026</h4><p>Maha Mock Test Series</p></div>
         </div>
         <div class="progress-track"><div class="progress-fill" style="width: 15%;"></div></div>
         <button class="resume-btn" style="margin-top:10px;">Resume Practice</button>
@@ -326,18 +243,138 @@
       <div class="enrolled-card">
         <div class="ec-top">
           <div class="ec-box" style="background: #E0E7FF; color: #4338CA;"><i class="fa-solid fa-building-columns"></i></div>
-          <div class="ec-title">
-            <h4>SSC CGL Tier 1 Pack</h4>
-            <p>Full Length Mocks</p>
-          </div>
+          <div class="ec-title"><h4>SSC CGL Tier 1 Pack</h4><p>Full Length Mocks</p></div>
         </div>
         <div class="progress-track"><div class="progress-fill" style="width: 45%; background: var(--orange);"></div></div>
         <button class="resume-btn" style="margin-top:10px;">Resume Practice</button>
       </div>
     </div>
 
+    <!-- 4. CURRENT AFFAIRS QUIZ (NEW SECTION) -->
+    <div class="section-header">
+      <h3><i class="fa-solid fa-bolt" style="color: var(--orange);"></i> Current Affairs Quiz</h3>
+      <a href="#" class="view-all">See All ></a>
+    </div>
+    <div class="scroll-container">
+      <div class="ca-card">
+        <div class="ca-title">19 June 2026 Daily Current Affairs Quiz (Morning)</div>
+        <div class="ca-meta"><span><i class="fa-regular fa-clock"></i> 10 mins</span><span><i class="fa-regular fa-circle-question"></i> 10 Ques</span></div>
+        <div class="ca-attempts">443 Attempts in 12 hrs</div>
+        <button class="ca-btn">Start Now</button>
+      </div>
+      <div class="ca-card">
+        <div class="ca-title">18 June 2026 Daily Current Affairs Quiz (Evening)</div>
+        <div class="ca-meta"><span><i class="fa-regular fa-clock"></i> 10 mins</span><span><i class="fa-regular fa-circle-question"></i> 10 Ques</span></div>
+        <div class="ca-attempts">847 Attempts in 12 hrs</div>
+        <button class="ca-btn">Start Now</button>
+      </div>
+      <div class="ca-card">
+        <div class="ca-title">18 June 2026 Daily Current Affairs Quiz (Morning)</div>
+        <div class="ca-meta"><span><i class="fa-regular fa-clock"></i> 10 mins</span><span><i class="fa-regular fa-circle-question"></i> 10 Ques</span></div>
+        <div class="ca-attempts">1,250 Attempts in 24 hrs</div>
+        <button class="ca-btn">Start Now</button>
+      </div>
+    </div>
+
+    <!-- 5. PREVIOUS YEAR PAPERS (BOOK DESIGN) -->
+    <div class="section-header">
+      <h3><i class="fa-solid fa-book-bookmark" style="color: var(--primary);"></i> Previous Year Papers</h3>
+      <a href="#" class="view-all">See All ></a>
+    </div>
+    <div class="scroll-container">
+      <div class="pyq-card"><div class="pyq-book book-green"><div class="pyq-bookmark"></div>2025</div><h4>All Exams</h4><p>24 Tests PDF</p></div>
+      <div class="pyq-card"><div class="pyq-book book-purple"><div class="pyq-bookmark"></div>2024</div><h4>All Exams</h4><p>39 Tests PDF</p></div>
+      <div class="pyq-card"><div class="pyq-book book-orange"><div class="pyq-bookmark"></div>2023</div><h4>All Exams</h4><p>42 Tests PDF</p></div>
+      <div class="pyq-card"><div class="pyq-book book-blue"><div class="pyq-bookmark"></div>2022</div><h4>All Exams</h4><p>45 Tests PDF</p></div>
+      <div class="pyq-card"><div class="pyq-book book-red"><div class="pyq-bookmark"></div>2021</div><h4>All Exams</h4><p>50 Tests PDF</p></div>
+    </div>
+
+    <!-- 6. TRENDING TEST SERIES (RESTORED) -->
+    <div class="section-header">
+      <h3><i class="fa-solid fa-fire" style="color: var(--red);"></i> Trending Test Series</h3>
+      <a href="#" class="view-all">View All</a>
+    </div>
+    <div class="scroll-container">
+      <div class="store-card">
+        <div class="card-thumb thumb-ssc"><span class="card-tag">Bestseller</span><div class="card-logo-badge" style="color:#4338CA;"><i class="fa-solid fa-building-columns"></i></div></div>
+        <div class="card-body">
+          <h4>SSC CHSL 2026 Complete Pack</h4>
+          <div class="meta-tags"><span>Hindi/Eng</span> <span>250+ Tests</span></div>
+          <div class="card-footer"><div class="price-box"><span class="old-price">₹499</span><span class="new-price">₹149</span></div><button class="action-btn">Unlock</button></div>
+        </div>
+      </div>
+      <div class="store-card">
+        <div class="card-thumb thumb-railway"><span class="card-tag">Trending</span><div class="card-logo-badge" style="color:#10B981;"><i class="fa-solid fa-train"></i></div></div>
+        <div class="card-body">
+          <h4>Railway RRB NTPC Mains</h4>
+          <div class="meta-tags"><span>Hindi/Eng</span> <span>100+ Tests</span></div>
+          <div class="card-footer"><div class="price-box"><span class="old-price">₹299</span><span class="new-price">₹99</span></div><button class="action-btn">Unlock</button></div>
+        </div>
+      </div>
+      <div class="store-card">
+        <div class="card-thumb thumb-police"><span class="card-tag">Hot</span><div class="card-logo-badge" style="color:#EA580C;"><i class="fa-solid fa-gavel"></i></div></div>
+        <div class="card-body">
+          <h4>UP SI (Sub Inspector) Pro Test</h4>
+          <div class="meta-tags"><span>Hindi</span> <span>50+ Tests</span></div>
+          <div class="card-footer"><div class="price-box"><span class="old-price">₹199</span><span class="new-price">₹49</span></div><button class="action-btn">Unlock</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. FREE TESTS FOR YOU (RESTORED) -->
+    <div class="section-header">
+      <h3><i class="fa-solid fa-gift" style="color: var(--green);"></i> Free Tests For You</h3>
+    </div>
+    <div class="scroll-container">
+      <div class="store-card">
+        <div class="card-thumb thumb-free"><span class="card-tag">Mini Mock</span><div class="card-logo-badge" style="color:#7C3AED;"><i class="fa-solid fa-bolt"></i></div></div>
+        <div class="card-body">
+          <h4>Static GK Speed Test</h4>
+          <div class="meta-tags"><span>20 Ques</span> <span>15 Mins</span></div>
+          <div class="card-footer"><span class="new-price" style="color: var(--green);">FREE</span><button class="action-btn" style="background:var(--primary); color:white; border:none;">Start</button></div>
+        </div>
+      </div>
+      <div class="store-card">
+        <div class="card-thumb thumb-bank"><span class="card-tag">Mini Mock</span><div class="card-logo-badge" style="color:#2563EB;"><i class="fa-solid fa-spell-check"></i></div></div>
+        <div class="card-body">
+          <h4>English Grammar Speed Test</h4>
+          <div class="meta-tags"><span>20 Ques</span> <span>15 Mins</span></div>
+          <div class="card-footer"><span class="new-price" style="color: var(--green);">FREE</span><button class="action-btn" style="background:var(--primary); color:white; border:none;">Start</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. UPCOMING EXAMS (RESTORED) -->
+    <div class="section-header">
+      <h3><i class="fa-solid fa-calendar-plus" style="color: var(--blue);"></i> Upcoming Exam Series</h3>
+    </div>
+    <div class="scroll-container">
+      <div class="store-card">
+        <div class="card-thumb thumb-prebook"><span class="card-tag">Pre-Book</span><div class="card-logo-badge" style="color:#475569;"><i class="fa-solid fa-hourglass-half"></i></div></div>
+        <div class="card-body">
+          <h4>UP Lekhpal Mega Test Pack</h4>
+          <div class="meta-tags"><span>Launching: 25 July</span></div>
+          <div class="card-footer"><span class="old-price" style="text-decoration:none; font-weight:600;">Coming Soon</span><button class="action-btn">Notify Me</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. ALL EXAMS CATEGORIES GRID (RESTORED) -->
+    <div class="section-header">
+      <h3><i class="fa-solid fa-layer-group" style="color: #8B5CF6;"></i> Explore Exam Categories</h3>
+    </div>
+    <div class="exam-grid">
+      <div class="exam-cat-card"><div class="exam-logo-box" style="background:#EEF2FF; color:#4338CA;"><i class="fa-solid fa-building-columns"></i></div><h4>SSC Exams</h4></div>
+      <div class="exam-cat-card"><div class="exam-logo-box" style="background:#FFF1F2; color:#E11D48;"><i class="fa-solid fa-shield-halved"></i></div><h4>Police Exams</h4></div>
+      <div class="exam-cat-card"><div class="exam-logo-box" style="background:#E6F4EA; color:#137333;"><i class="fa-solid fa-train"></i></div><h4>Railways</h4></div>
+      <div class="exam-cat-card"><div class="exam-logo-box" style="background:#E8F0FE; color:#1A73E8;"><i class="fa-solid fa-credit-card"></i></div><h4>Banking</h4></div>
+      <div class="exam-cat-card"><div class="exam-logo-box" style="background:#FEF3C7; color:#D97706;"><i class="fa-solid fa-scale-balanced"></i></div><h4>Defence / IB</h4></div>
+      <div class="exam-cat-card"><div class="exam-logo-box" style="background:#F3E8FF; color:#9333EA;"><i class="fa-solid fa-chalkboard-user"></i></div><h4>Teaching</h4></div>
+    </div>
+
   </main>
 
+  <!-- MOBILE NAVIGATION -->
   <nav class="mobile-nav">
     <a href="home.html" class="active"><i class="fa-solid fa-house"></i><span>Home</span></a>
     <a href="#"><i class="fa-solid fa-book-open"></i><span>Courses</span></a>
