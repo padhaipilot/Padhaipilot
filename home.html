@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Home - Padhai Pilot Store</title>
+  <title>Premium Store - Padhai Pilot</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
@@ -11,14 +11,15 @@
     :root {
       --bg: #F4F7FB; 
       --card: #FFFFFF; 
-      --primary: #5A67D8; 
+      --primary: #4338CA; /* Deep Indigo */
       --primary-light: #EEF2FF;
-      --text-main: #1E293B; 
+      --text-main: #0F172A; 
       --text-muted: #64748B; 
       --border: #E2E8F0;
       --green: #10B981;
       --orange: #F59E0B;
       --red: #EF4444;
+      --yellow: #FBBF24;
     }
     
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
@@ -26,7 +27,7 @@
 
     /* ================= SIDEBAR ================= */
     .sidebar { width: 260px; height: 100vh; background: var(--card); position: fixed; padding: 25px 20px; border-right: 1px solid var(--border); display: flex; flex-direction: column; z-index: 100; }
-    .logo { display: flex; align-items: center; gap: 12px; font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 35px; padding-left: 10px; }
+    .logo { display: flex; align-items: center; gap: 12px; font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 35px; padding-left: 10px; }
     .nav-menu { flex: 1; }
     .nav-item { display: flex; align-items: center; gap: 15px; padding: 12px 18px; text-decoration: none; color: var(--text-muted); border-radius: 12px; margin-bottom: 8px; font-weight: 600; transition: 0.3s; }
     .nav-item.active, .nav-item:hover { background: var(--primary-light); color: var(--primary); }
@@ -36,47 +37,78 @@
     .main-content { margin-left: 260px; padding: 30px 40px; padding-bottom: 100px; }
     
     /* Header */
-    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-    .header-left h2 { font-size: 22px; font-weight: 700; color: var(--text-main); }
-    .header-left p { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+    .header-left h2 { font-size: 26px; font-weight: 800; color: var(--text-main); letter-spacing: -0.5px; }
+    .header-left p { font-size: 14px; color: var(--text-muted); margin-top: 2px; }
     .header-right { display: flex; align-items: center; gap: 20px; }
-    .user-avatar-small { width: 40px; height: 40px; background: #CBD5E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; color: white; cursor: pointer; }
+    .search-bar { background: white; border: 1px solid var(--border); padding: 10px 20px; border-radius: 20px; display: flex; align-items: center; gap: 10px; width: 300px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+    .search-bar input { border: none; outline: none; width: 100%; font-size: 13px; font-family: 'Poppins'; }
+    .user-avatar-small { width: 45px; height: 45px; background: #E2E8F0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--text-muted); cursor: pointer; border: 2px solid white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
 
-    /* Main Banner (Ads/Offers) */
-    .hero-banner { background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%); border-radius: 20px; padding: 40px; color: white; display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; box-shadow: 0 10px 25px rgba(90, 103, 216, 0.2); position: relative; overflow: hidden; }
-    .hero-banner::after { content: '\f19d'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; right: -20px; bottom: -40px; font-size: 150px; color: rgba(255,255,255,0.1); }
-    .banner-content h1 { font-size: 28px; font-weight: 800; margin-bottom: 10px; }
-    .banner-content p { font-size: 15px; color: #E2E8F0; margin-bottom: 20px; max-width: 400px; }
-    .btn-live { background: #EF4444; color: white; padding: 10px 25px; border-radius: 12px; font-weight: 700; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; animation: pulse 2s infinite; }
-    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(239, 68, 68, 0); } 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); } }
+    /* Categories Filter (Dynamic look) */
+    .categories-bar { display: flex; gap: 12px; margin-bottom: 30px; overflow-x: auto; padding-bottom: 5px; scrollbar-width: none; }
+    .categories-bar::-webkit-scrollbar { display: none; }
+    .cat-btn { padding: 8px 20px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1px solid var(--border); background: var(--card); color: var(--text-muted); transition: 0.3s; white-space: nowrap; }
+    .cat-btn.active { background: var(--text-main); color: white; border-color: var(--text-main); }
+    .cat-btn:hover:not(.active) { border-color: var(--primary); color: var(--primary); }
+
+    /* Ultra-Premium Hero Banner */
+    .hero-banner { background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%); border-radius: 24px; padding: 40px 50px; color: white; display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; box-shadow: 0 20px 40px rgba(79, 70, 229, 0.25); position: relative; overflow: hidden; }
+    .hero-banner::before { content: ''; position: absolute; width: 300px; height: 300px; background: rgba(255,255,255,0.1); border-radius: 50%; top: -100px; right: -50px; filter: blur(20px); }
+    .hero-banner::after { content: ''; position: absolute; width: 200px; height: 200px; background: rgba(255,255,255,0.1); border-radius: 50%; bottom: -50px; right: 150px; filter: blur(15px); }
+    
+    .banner-badge { background: rgba(255,255,255,0.2); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.3); padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 15px; }
+    .banner-badge i { color: var(--yellow); }
+    .banner-content { position: relative; z-index: 2; }
+    .banner-content h1 { font-size: 32px; font-weight: 800; margin-bottom: 10px; line-height: 1.2; }
+    .banner-content p { font-size: 15px; color: #E0E7FF; margin-bottom: 25px; max-width: 450px; }
+    .btn-live { background: white; color: var(--primary); padding: 12px 30px; border-radius: 14px; font-weight: 700; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: 0.3s; }
+    .btn-live:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(0,0,0,0.15); }
+    .banner-image { font-size: 120px; opacity: 0.8; transform: rotate(-15deg); position: relative; z-index: 2; }
 
     /* Horizontal Scroll Sections */
-    .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-    .section-header h3 { font-size: 18px; font-weight: 700; color: var(--text-main); }
-    .view-all { font-size: 13px; color: var(--primary); font-weight: 600; text-decoration: none; }
+    .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; }
+    .section-header h3 { font-size: 20px; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 10px; }
+    .view-all { font-size: 14px; color: var(--primary); font-weight: 600; text-decoration: none; background: white; padding: 5px 15px; border-radius: 20px; border: 1px solid var(--border); transition: 0.3s; }
+    .view-all:hover { background: var(--primary-light); }
     
-    .scroll-container { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px; scrollbar-width: none; /* Firefox */ }
-    .scroll-container::-webkit-scrollbar { display: none; /* Chrome/Safari */ }
+    .scroll-container { display: flex; gap: 25px; overflow-x: auto; padding-bottom: 30px; scrollbar-width: none; }
+    .scroll-container::-webkit-scrollbar { display: none; }
 
-    /* Store Cards (Tests, PDFs, Courses) */
-    .store-card { min-width: 240px; background: var(--card); border-radius: 16px; border: 1px solid var(--border); padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); display: flex; flex-direction: column; transition: 0.3s; cursor: pointer; position: relative; }
-    .store-card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 10px 25px rgba(90, 103, 216, 0.1); }
+    /* Rich Store Cards (Testbook/PW Style) */
+    .store-card { min-width: 280px; max-width: 280px; background: var(--card); border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.03); display: flex; flex-direction: column; transition: 0.3s; cursor: pointer; overflow: hidden; position: relative; }
+    .store-card:hover { transform: translateY(-8px); border-color: rgba(67, 56, 202, 0.3); box-shadow: 0 20px 40px rgba(67, 56, 202, 0.1); }
     
-    .card-icon { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 15px; }
-    .icon-up { background: #F3E8FF; color: #9333EA; }
-    .icon-eng { background: #DBEAFE; color: #3B82F6; }
-    .icon-ssc { background: #FEF3C7; color: #F59E0B; }
-    .icon-pdf { background: #D1FAE5; color: #10B981; }
+    /* Card Thumbnail Top Area */
+    .card-thumb { height: 100px; padding: 20px; position: relative; display: flex; justify-content: space-between; align-items: flex-start; }
+    .bg-blue { background: linear-gradient(135deg, #E0E7FF 0%, #C7D2FE 100%); }
+    .bg-orange { background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%); }
+    .bg-green { background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%); }
+    .bg-red { background: linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%); }
+    
+    .card-tag { background: white; padding: 4px 10px; border-radius: 12px; font-size: 10px; font-weight: 700; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+    .tag-hot { color: var(--red); }
+    .tag-bestseller { color: var(--orange); }
+    .card-icon { width: 45px; height: 45px; background: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
 
-    .store-card h4 { font-size: 16px; font-weight: 700; color: var(--text-main); margin-bottom: 5px; }
-    .store-card p { font-size: 12px; color: var(--text-muted); margin-bottom: 15px; flex-grow: 1; }
+    /* Card Body */
+    .card-body { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
+    .card-body h4 { font-size: 16px; font-weight: 700; color: var(--text-main); margin-bottom: 8px; line-height: 1.3; }
+    
+    /* Meta Details (Making it look data-dense and real) */
+    .meta-details { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; }
+    .meta-item { background: #F8FAFC; border: 1px solid var(--border); padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: 500; color: var(--text-muted); display: flex; align-items: center; gap: 4px; }
+    
+    .students-enrolled { font-size: 12px; color: var(--text-muted); margin-bottom: 15px; display: flex; align-items: center; gap: 5px; font-weight: 500; }
     
     /* Pricing Area in Card */
-    .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #F1F5F9; padding-top: 15px; }
-    .price-tag { font-weight: 700; font-size: 16px; display: flex; align-items: center; gap: 5px; }
-    .price-free { color: var(--green); }
-    .price-paid { color: var(--text-main); }
-    .buy-btn { background: var(--primary-light); color: var(--primary); padding: 6px 15px; border-radius: 8px; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 5px; border: none; cursor: pointer; }
+    .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--border); padding-top: 15px; margin-top: auto; }
+    .price-area { display: flex; flex-direction: column; }
+    .old-price { font-size: 11px; color: #94A3B8; text-decoration: line-through; font-weight: 500; }
+    .new-price { font-weight: 800; font-size: 18px; color: var(--text-main); display: flex; align-items: center; gap: 2px; }
+    .price-free { color: var(--green); font-size: 18px; font-weight: 800; }
+    
+    .buy-btn { background: white; color: var(--primary); border: 1px solid var(--primary); padding: 8px 18px; border-radius: 10px; font-size: 13px; font-weight: 700; transition: 0.3s; cursor: pointer; }
     .store-card:hover .buy-btn { background: var(--primary); color: white; }
 
     /* ================= MOBILE BOTTOM NAV ================= */
@@ -91,9 +123,10 @@
       .sidebar { display: none; }
       .main-content { margin-left: 0; padding: 20px; }
       .mobile-nav { display: flex; }
-      .hero-banner { padding: 30px 20px; flex-direction: column; text-align: center; }
-      .hero-banner::after { display: none; }
-      .banner-content h1 { font-size: 22px; }
+      .header-right .search-bar { display: none; }
+      .hero-banner { padding: 30px 25px; flex-direction: column; text-align: left; align-items: flex-start; }
+      .banner-image { display: none; }
+      .banner-content h1 { font-size: 24px; }
     }
   </style>
 </head>
@@ -103,7 +136,7 @@
   <aside class="sidebar">
     <div class="logo"><i class="fa-solid fa-graduation-cap"></i> Padhai Pilot</div>
     <div class="nav-menu">
-      <a href="home.html" class="nav-item active"><i class="fa-solid fa-house"></i> Home (Store)</a>
+      <a href="home.html" class="nav-item active"><i class="fa-solid fa-house"></i> Store</a>
       <a href="profile.html" class="nav-item"><i class="fa-solid fa-table-columns"></i> Dashboard</a>
       <a href="#" class="nav-item"><i class="fa-solid fa-book-open"></i> My Courses</a>
       <a href="#" class="nav-item"><i class="fa-solid fa-file-pen"></i> Mock Tests</a>
@@ -117,105 +150,169 @@
     <!-- Header -->
     <div class="header">
       <div class="header-left">
-        <h2>Hi, <span id="userName">Student</span> 👋</h2>
-        <p>Ready to crack your next exam?</p>
+        <h2>Explore Exams 🚀</h2>
+        <p>Find the best mock tests and study materials.</p>
       </div>
       <div class="header-right">
-        <i class="fa-regular fa-bell" style="font-size: 22px; color: var(--text-muted); cursor: pointer;"></i>
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass" style="color:var(--text-muted);"></i>
+          <input type="text" placeholder="Search for SSC, UP Police, Notes...">
+        </div>
         <div class="user-avatar-small" onclick="window.location.href='profile.html'" title="Go to Dashboard">
           <i class="fa-solid fa-user"></i>
         </div>
       </div>
     </div>
 
-    <!-- MAIN BANNER (For Engagement) -->
+    <!-- Dynamic Categories Filter -->
+    <div class="categories-bar">
+      <div class="cat-btn active">All Exams</div>
+      <div class="cat-btn">SSC & Railway</div>
+      <div class="cat-btn">UP State Exams</div>
+      <div class="cat-btn">Banking</div>
+      <div class="cat-btn">PDF Notes</div>
+      <div class="cat-btn">Free Quizzes</div>
+    </div>
+
+    <!-- RICH MAIN BANNER -->
     <div class="hero-banner">
       <div class="banner-content">
-        <h1>UP Police Mega Mock Test!</h1>
-        <p>All India Rank Prediction • Free for first 10,000 students. Test your preparation now.</p>
-        <button class="btn-live"><i class="fa-solid fa-satellite-dish"></i> JOIN LIVE FREE</button>
+        <div class="banner-badge"><i class="fa-solid fa-bolt"></i> MEGA EVENT LIVE</div>
+        <h1>UP Police Mega Mock Test 2026</h1>
+        <p>Attempt the All-India Live Mock Test. Compete with 50,000+ students and check your real rank!</p>
+        <button class="btn-live">Attempt Now - It's Free</button>
+      </div>
+      <div class="banner-image">
+        <i class="fa-solid fa-trophy" style="color: rgba(255, 255, 255, 0.4);"></i>
       </div>
     </div>
 
     <!-- SECTION 1: TRENDING MOCK TESTS -->
     <div class="section-header">
-      <h3>🔥 Trending Mock Tests</h3>
-      <a href="#" class="view-all">Scroll More <i class="fa-solid fa-arrow-right"></i></a>
+      <h3><i class="fa-solid fa-fire" style="color: var(--orange);"></i> Trending Test Series</h3>
+      <a href="#" class="view-all">View All</a>
     </div>
     <div class="scroll-container">
       
-      <!-- Card 1 (Paid) -->
+      <!-- Card 1: UP Police (Paid) -->
       <div class="store-card">
-        <div class="card-icon icon-up"><i class="fa-solid fa-shield-halved"></i></div>
-        <h4>UP Police Constable</h4>
-        <p>15 Full Syllabus Tests + Previous Year Papers.</p>
-        <div class="card-footer">
-          <span class="price-tag price-paid"><i class="fa-solid fa-indian-rupee-sign" style="font-size:14px;"></i> 99</span>
-          <button class="buy-btn"><i class="fa-solid fa-lock"></i> Buy Now</button>
+        <div class="card-thumb bg-blue">
+          <div class="card-tag tag-bestseller">Bestseller</div>
+          <div class="card-icon" style="color: #4338CA;"><i class="fa-solid fa-shield-halved"></i></div>
+        </div>
+        <div class="card-body">
+          <h4>UP Police Constable Maha Pack</h4>
+          <div class="meta-details">
+            <span class="meta-item"><i class="fa-solid fa-language"></i> Hindi/Eng</span>
+            <span class="meta-item"><i class="fa-solid fa-file-lines"></i> 150+ Tests</span>
+          </div>
+          <div class="students-enrolled"><i class="fa-solid fa-users"></i> 12.5k Students</div>
+          <div class="card-footer">
+            <div class="price-area">
+              <span class="old-price">₹499</span>
+              <span class="new-price">₹99</span>
+            </div>
+            <button class="buy-btn">Unlock Now</button>
+          </div>
         </div>
       </div>
 
-      <!-- Card 2 (Free/Unlock) -->
+      <!-- Card 2: SSC CGL (Paid) -->
       <div class="store-card">
-        <div class="card-icon icon-eng"><i class="fa-solid fa-language"></i></div>
-        <h4>English Daily Vocab</h4>
-        <p>Daily short quizzes to master English grammar.</p>
-        <div class="card-footer">
-          <span class="price-tag price-free">FREE</span>
-          <button class="buy-btn" style="background:var(--primary); color:white;"><i class="fa-solid fa-play"></i> Start</button>
+        <div class="card-thumb bg-orange">
+          <div class="card-tag tag-hot">Trending</div>
+          <div class="card-icon" style="color: #D97706;"><i class="fa-solid fa-building-columns"></i></div>
+        </div>
+        <div class="card-body">
+          <h4>SSC CGL Tier 1 & 2 Complete Tests</h4>
+          <div class="meta-details">
+            <span class="meta-item"><i class="fa-solid fa-language"></i> Hinglish</span>
+            <span class="meta-item"><i class="fa-solid fa-file-lines"></i> 300+ Tests</span>
+          </div>
+          <div class="students-enrolled"><i class="fa-solid fa-users"></i> 45k Students</div>
+          <div class="card-footer">
+            <div class="price-area">
+              <span class="old-price">₹999</span>
+              <span class="new-price">₹149</span>
+            </div>
+            <button class="buy-btn">Unlock Now</button>
+          </div>
         </div>
       </div>
 
-      <!-- Card 3 (Paid) -->
+      <!-- Card 3: Free Daily Quiz -->
       <div class="store-card">
-        <div class="card-icon icon-ssc"><i class="fa-solid fa-building-columns"></i></div>
-        <h4>SSC CGL Tier 1</h4>
-        <p>Detailed analysis and Pro level Mock Tests.</p>
-        <div class="card-footer">
-          <span class="price-tag price-paid"><i class="fa-solid fa-indian-rupee-sign" style="font-size:14px;"></i> 149</span>
-          <button class="buy-btn"><i class="fa-solid fa-lock"></i> Buy Now</button>
+        <div class="card-thumb bg-green">
+          <div class="card-tag" style="color: var(--green);">Free</div>
+          <div class="card-icon" style="color: #059669;"><i class="fa-solid fa-clock-rotate-left"></i></div>
+        </div>
+        <div class="card-body">
+          <h4>Current Affairs Daily Quiz</h4>
+          <div class="meta-details">
+            <span class="meta-item"><i class="fa-solid fa-calendar-day"></i> Daily</span>
+            <span class="meta-item"><i class="fa-solid fa-stopwatch"></i> 10 Mins</span>
+          </div>
+          <div class="students-enrolled"><i class="fa-solid fa-bolt"></i> Boost your score daily</div>
+          <div class="card-footer">
+            <div class="price-area">
+              <span class="price-free">FREE</span>
+            </div>
+            <button class="buy-btn" style="background:var(--primary); color:white; border:none;">Start Test</button>
+          </div>
         </div>
       </div>
 
     </div>
 
-    <!-- SECTION 2: PREMIUM PDF NOTES & REELS -->
-    <div class="section-header" style="margin-top: 30px;">
-      <h3>📚 Premium PDFs & Study Material</h3>
-      <a href="#" class="view-all">Scroll More <i class="fa-solid fa-arrow-right"></i></a>
+    <!-- SECTION 2: PREMIUM PDF NOTES -->
+    <div class="section-header" style="margin-top: 10px;">
+      <h3><i class="fa-solid fa-book-open-reader" style="color: var(--primary);"></i> E-Books & PDF Notes</h3>
+      <a href="#" class="view-all">View All</a>
     </div>
     <div class="scroll-container">
       
-      <!-- PDF 1 (Paid) -->
-      <div class="store-card" style="min-width: 200px;">
-        <div class="card-icon icon-pdf"><i class="fa-solid fa-file-pdf"></i></div>
-        <h4>Maths Short Tricks</h4>
-        <p>100+ pages of quick formulas.</p>
-        <div class="card-footer">
-          <span class="price-tag price-paid">₹ 49</span>
-          <button class="buy-btn"><i class="fa-solid fa-lock"></i> Unlock</button>
+      <!-- PDF 1 -->
+      <div class="store-card">
+        <div class="card-thumb bg-red">
+          <div class="card-tag tag-hot">Must Have</div>
+          <div class="card-icon" style="color: #DC2626;"><i class="fa-solid fa-file-pdf"></i></div>
+        </div>
+        <div class="card-body">
+          <h4>Maths Short Tricks Formula Book</h4>
+          <div class="meta-details">
+            <span class="meta-item"><i class="fa-solid fa-file"></i> 120 Pages</span>
+            <span class="meta-item"><i class="fa-solid fa-download"></i> Printable</span>
+          </div>
+          <div class="students-enrolled"><i class="fa-solid fa-star" style="color:var(--yellow);"></i> 4.8/5 Rating</div>
+          <div class="card-footer">
+            <div class="price-area">
+              <span class="old-price">₹199</span>
+              <span class="new-price">₹49</span>
+            </div>
+            <button class="buy-btn">Download</button>
+          </div>
         </div>
       </div>
 
-      <!-- Reel/Video 1 (Paid) -->
-      <div class="store-card" style="min-width: 200px;">
-        <div class="card-icon icon-eng" style="background:#FFE4E6; color:#E11D48;"><i class="fa-solid fa-video"></i></div>
-        <h4>English Pronunciation</h4>
-        <p>Video Reel Series by Experts.</p>
-        <div class="card-footer">
-          <span class="price-tag price-paid">₹ 29</span>
-          <button class="buy-btn"><i class="fa-solid fa-lock"></i> Unlock</button>
+      <!-- PDF 2 -->
+      <div class="store-card">
+        <div class="card-thumb bg-blue">
+          <div class="card-tag" style="color: var(--primary);">Handwritten</div>
+          <div class="card-icon" style="color: #4338CA;"><i class="fa-solid fa-pen-nib"></i></div>
         </div>
-      </div>
-
-      <!-- PDF 2 (Free) -->
-      <div class="store-card" style="min-width: 200px;">
-        <div class="card-icon icon-up" style="background:#FEF3C7; color:#D97706;"><i class="fa-solid fa-book"></i></div>
-        <h4>GK Capsule 2024</h4>
-        <p>Monthly Current Affairs Notes.</p>
-        <div class="card-footer">
-          <span class="price-tag price-free">FREE</span>
-          <button class="buy-btn" style="background:var(--primary); color:white;"><i class="fa-solid fa-download"></i> Get</button>
+        <div class="card-body">
+          <h4>Complete Indian Polity Notes</h4>
+          <div class="meta-details">
+            <span class="meta-item"><i class="fa-solid fa-language"></i> Hindi Medium</span>
+          </div>
+          <div class="students-enrolled"><i class="fa-solid fa-star" style="color:var(--yellow);"></i> 4.9/5 Rating</div>
+          <div class="card-footer">
+            <div class="price-area">
+              <span class="old-price">₹99</span>
+              <span class="new-price">₹29</span>
+            </div>
+            <button class="buy-btn">Download</button>
+          </div>
         </div>
       </div>
 
@@ -225,10 +322,10 @@
 
   <!-- MOBILE NAVIGATION -->
   <nav class="mobile-nav">
-    <a href="home.html" class="active"><i class="fa-solid fa-house"></i><span>Home</span></a>
+    <a href="home.html" class="active"><i class="fa-solid fa-house"></i><span>Store</span></a>
     <a href="#"><i class="fa-solid fa-book-open"></i><span>Courses</span></a>
     <a href="#"><i class="fa-solid fa-clipboard-list"></i><span>Tests</span></a>
-    <a href="profile.html"><i class="fa-regular fa-user"></i><span>Profile</span></a>
+    <a href="profile.html"><i class="fa-regular fa-user"></i><span>Dashboard</span></a>
   </nav>
 
   <!-- Firebase Scripts -->
@@ -236,35 +333,5 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 
-  <script>
-    // Firebase Config (Aapka original config)
-    const firebaseConfig = {
-      apiKey: "AIzaSyDHo4a317WqzvSFB31X9RdbBksUNb81fZM",
-      authDomain: "padhaipilot-1dcae.firebaseapp.com",
-      projectId: "padhaipilot-1dcae",
-      storageBucket: "padhaipilot-1dcae.firebasestorage.app",
-      messagingSenderId: "752062230479",
-      appId: "1:752062230479:web:59680b96008a3aa052acba"
-    };
-
-    if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
-    const auth = firebase.auth();
-    const db = firebase.firestore();
-
-    // Check if user is logged in, else kick to index.html
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        // Naam nikal kar likhna
-        db.collection("users").doc(user.uid).get().then((doc) => {
-          if (doc.exists) {
-            const firstName = doc.data().name.split(" ")[0]; // Sirf pehla naam
-            document.getElementById('userName').innerText = firstName;
-          }
-        });
-      } else {
-        window.location.href = "index.html"; // Login nahi hai toh wapas bhej do
-      }
-    });
-  </script>
 </body>
 </html>
