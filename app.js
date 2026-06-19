@@ -87,7 +87,7 @@ auth.onAuthStateChanged((user) => {
         if(headerLoginBtn) {
             headerLoginBtn.innerHTML = '<i class="fa-solid fa-table-columns"></i> Dashboard';
             headerLoginBtn.onclick = () => {
-                window.location.href = "profile.html"; // Seedha naye page par bhejega
+                window.location.href = "home.html"; // Seedha naye page par bhejega
             };
         }
     } else {
@@ -126,7 +126,7 @@ if(registerBtn) {
             }).then(() => {
                 loginModal.classList.remove('active');
                 alert("Welcome to Padhai Pilot!");
-                window.location.href = "profile.html"; // Register hote hi Dashboard par bhej do
+                window.location.href = "home.html"; // Register hote hi Dashboard par bhej do
             });
         })
         .catch((error) => {
@@ -135,7 +135,7 @@ if(registerBtn) {
                 .then(() => {
                     loginModal.classList.remove('active');
                     alert("Welcome Back!");
-                    window.location.href = "profile.html"; // Login hote hi Dashboard par bhej do
+                    window.location.href = "home.html"; // Login hote hi Dashboard par bhej do
                 })
                 .catch((loginError) => {
                     alert("Galat Password!");
