@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Home - Padhai Pilot Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg: #F4F7FB; 
+      --card: #FFFFFF; 
+      --primary: #5A67D8; 
+      --primary-light: #EEF2FF;
+      --text-main: #1E293B; 
+      --text-muted: #64748B; 
+      --border: #E2E8F0;
+      --green: #10B981;
+      --orange: #F59E0B;
+      --red: #EF4444;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background-color: var(--bg); color: var(--text-main); overflow-x: hidden; }
+
+    /* ================= SIDEBAR ================= */
+    .sidebar { width: 260px; height: 100vh; background: var(--card); position: fixed; padding: 25px 20px; border-right: 1px solid var(--border); display: flex; flex-direction: column; z-index: 100; }
+    .logo { display: flex; align-items: center; gap: 12px; font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 35px; padding-left: 10px; }
+    .nav-menu { flex: 1; }
+    .nav-item { display: flex; align-items: center; gap: 15px; padding: 12px 18px; text-decoration: none; color: var(--text-muted); border-radius: 12px; margin-bottom: 8px; font-weight: 600; transition: 0.3s; }
+    .nav-item.active, .nav-item:hover { background: var(--primary-light); color: var(--primary); }
+    .nav-item i { font-size: 20px; width: 24px; text-align: center; }
+
+    /* ================= MAIN CONTENT ================= */
+    .main-content { margin-left: 260px; padding: 30px 40px; padding-bottom: 100px; }
+    
+    /* Header */
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+    .header-left h2 { font-size: 22px; font-weight: 700; color: var(--text-main); }
+    .header-left p { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+    .header-right { display: flex; align-items: center; gap: 20px; }
+    .user-avatar-small { width: 40px; height: 40px; background: #CBD5E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; color: white; cursor: pointer; }
+
+    /* Main Banner (Ads/Offers) */
+    .hero-banner { background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%); border-radius: 20px; padding: 40px; color: white; display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; box-shadow: 0 10px 25px rgba(90, 103, 216, 0.2); position: relative; overflow: hidden; }
+    .hero-banner::after { content: '\f19d'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; right: -20px; bottom: -40px; font-size: 150px; color: rgba(255,255,255,0.1); }
+    .banner-content h1 { font-size: 28px; font-weight: 800; margin-bottom: 10px; }
+    .banner-content p { font-size: 15px; color: #E2E8F0; margin-bottom: 20px; max-width: 400px; }
+    .btn-live { background: #EF4444; color: white; padding: 10px 25px; border-radius: 12px; font-weight: 700; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(239, 68, 68, 0); } 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); } }
+
+    /* Horizontal Scroll Sections */
+    .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+    .section-header h3 { font-size: 18px; font-weight: 700; color: var(--text-main); }
+    .view-all { font-size: 13px; color: var(--primary); font-weight: 600; text-decoration: none; }
+    
+    .scroll-container { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px; scrollbar-width: none; /* Firefox */ }
+    .scroll-container::-webkit-scrollbar { display: none; /* Chrome/Safari */ }
+
+    /* Store Cards (Tests, PDFs, Courses) */
+    .store-card { min-width: 240px; background: var(--card); border-radius: 16px; border: 1px solid var(--border); padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); display: flex; flex-direction: column; transition: 0.3s; cursor: pointer; position: relative; }
+    .store-card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 10px 25px rgba(90, 103, 216, 0.1); }
+    
+    .card-icon { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 15px; }
+    .icon-up { background: #F3E8FF; color: #9333EA; }
+    .icon-eng { background: #DBEAFE; color: #3B82F6; }
+    .icon-ssc { background: #FEF3C7; color: #F59E0B; }
+    .icon-pdf { background: #D1FAE5; color: #10B981; }
+
+    .store-card h4 { font-size: 16px; font-weight: 700; color: var(--text-main); margin-bottom: 5px; }
+    .store-card p { font-size: 12px; color: var(--text-muted); margin-bottom: 15px; flex-grow: 1; }
+    
+    /* Pricing Area in Card */
+    .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #F1F5F9; padding-top: 15px; }
+    .price-tag { font-weight: 700; font-size: 16px; display: flex; align-items: center; gap: 5px; }
+    .price-free { color: var(--green); }
+    .price-paid { color: var(--text-main); }
+    .buy-btn { background: var(--primary-light); color: var(--primary); padding: 6px 15px; border-radius: 8px; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 5px; border: none; cursor: pointer; }
+    .store-card:hover .buy-btn { background: var(--primary); color: white; }
+
+    /* ================= MOBILE BOTTOM NAV ================= */
+    .mobile-nav { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--card); border-top: 1px solid var(--border); justify-content: space-around; padding: 10px 10px 20px 10px; z-index: 1000; box-shadow: 0 -5px 20px rgba(0,0,0,0.03); }
+    .mobile-nav a { color: var(--text-muted); text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 11px; font-weight: 600; gap: 5px; }
+    .mobile-nav a.active { color: var(--primary); }
+    .mobile-nav a i { font-size: 20px; padding: 8px; border-radius: 10px; }
+    .mobile-nav a.active i { background: var(--primary-light); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .main-content { margin-left: 0; padding: 20px; }
+      .mobile-nav { display: flex; }
+      .hero-banner { padding: 30px 20px; flex-direction: column; text-align: center; }
+      .hero-banner::after { display: none; }
+      .banner-content h1 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo"><i class="fa-solid fa-graduation-cap"></i> Padhai Pilot</div>
+    <div class="nav-menu">
+      <a href="home.html" class="nav-item active"><i class="fa-solid fa-house"></i> Home (Store)</a>
+      <a href="profile.html" class="nav-item"><i class="fa-solid fa-table-columns"></i> Dashboard</a>
+      <a href="#" class="nav-item"><i class="fa-solid fa-book-open"></i> My Courses</a>
+      <a href="#" class="nav-item"><i class="fa-solid fa-file-pen"></i> Mock Tests</a>
+      <a href="#" class="nav-item"><i class="fa-solid fa-gear"></i> Settings</a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    
+    <!-- Header -->
+    <div class="header">
+      <div class="header-left">
+        <h2>Hi, <span id="userName">Student</span> 👋</h2>
+        <p>Ready to crack your next exam?</p>
+      </div>
+      <div class="header-right">
+        <i class="fa-regular fa-bell" style="font-size: 22px; color: var(--text-muted); cursor: pointer;"></i>
+        <div class="user-avatar-small" onclick="window.location.href='profile.html'" title="Go to Dashboard">
+          <i class="fa-solid fa-user"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN BANNER (For Engagement) -->
+    <div class="hero-banner">
+      <div class="banner-content">
+        <h1>UP Police Mega Mock Test!</h1>
+        <p>All India Rank Prediction • Free for first 10,000 students. Test your preparation now.</p>
+        <button class="btn-live"><i class="fa-solid fa-satellite-dish"></i> JOIN LIVE FREE</button>
+      </div>
+    </div>
+
+    <!-- SECTION 1: TRENDING MOCK TESTS -->
+    <div class="section-header">
+      <h3>🔥 Trending Mock Tests</h3>
+      <a href="#" class="view-all">Scroll More <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="scroll-container">
+      
+      <!-- Card 1 (Paid) -->
+      <div class="store-card">
+        <div class="card-icon icon-up"><i class="fa-solid fa-shield-halved"></i></div>
+        <h4>UP Police Constable</h4>
+        <p>15 Full Syllabus Tests + Previous Year Papers.</p>
+        <div class="card-footer">
+          <span class="price-tag price-paid"><i class="fa-solid fa-indian-rupee-sign" style="font-size:14px;"></i> 99</span>
+          <button class="buy-btn"><i class="fa-solid fa-lock"></i> Buy Now</button>
+        </div>
+      </div>
+
+      <!-- Card 2 (Free/Unlock) -->
+      <div class="store-card">
+        <div class="card-icon icon-eng"><i class="fa-solid fa-language"></i></div>
+        <h4>English Daily Vocab</h4>
+        <p>Daily short quizzes to master English grammar.</p>
+        <div class="card-footer">
+          <span class="price-tag price-free">FREE</span>
+          <button class="buy-btn" style="background:var(--primary); color:white;"><i class="fa-solid fa-play"></i> Start</button>
+        </div>
+      </div>
+
+      <!-- Card 3 (Paid) -->
+      <div class="store-card">
+        <div class="card-icon icon-ssc"><i class="fa-solid fa-building-columns"></i></div>
+        <h4>SSC CGL Tier 1</h4>
+        <p>Detailed analysis and Pro level Mock Tests.</p>
+        <div class="card-footer">
+          <span class="price-tag price-paid"><i class="fa-solid fa-indian-rupee-sign" style="font-size:14px;"></i> 149</span>
+          <button class="buy-btn"><i class="fa-solid fa-lock"></i> Buy Now</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SECTION 2: PREMIUM PDF NOTES & REELS -->
+    <div class="section-header" style="margin-top: 30px;">
+      <h3>📚 Premium PDFs & Study Material</h3>
+      <a href="#" class="view-all">Scroll More <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="scroll-container">
+      
+      <!-- PDF 1 (Paid) -->
+      <div class="store-card" style="min-width: 200px;">
+        <div class="card-icon icon-pdf"><i class="fa-solid fa-file-pdf"></i></div>
+        <h4>Maths Short Tricks</h4>
+        <p>100+ pages of quick formulas.</p>
+        <div class="card-footer">
+          <span class="price-tag price-paid">₹ 49</span>
+          <button class="buy-btn"><i class="fa-solid fa-lock"></i> Unlock</button>
+        </div>
+      </div>
+
+      <!-- Reel/Video 1 (Paid) -->
+      <div class="store-card" style="min-width: 200px;">
+        <div class="card-icon icon-eng" style="background:#FFE4E6; color:#E11D48;"><i class="fa-solid fa-video"></i></div>
+        <h4>English Pronunciation</h4>
+        <p>Video Reel Series by Experts.</p>
+        <div class="card-footer">
+          <span class="price-tag price-paid">₹ 29</span>
+          <button class="buy-btn"><i class="fa-solid fa-lock"></i> Unlock</button>
+        </div>
+      </div>
+
+      <!-- PDF 2 (Free) -->
+      <div class="store-card" style="min-width: 200px;">
+        <div class="card-icon icon-up" style="background:#FEF3C7; color:#D97706;"><i class="fa-solid fa-book"></i></div>
+        <h4>GK Capsule 2024</h4>
+        <p>Monthly Current Affairs Notes.</p>
+        <div class="card-footer">
+          <span class="price-tag price-free">FREE</span>
+          <button class="buy-btn" style="background:var(--primary); color:white;"><i class="fa-solid fa-download"></i> Get</button>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- MOBILE NAVIGATION -->
+  <nav class="mobile-nav">
+    <a href="home.html" class="active"><i class="fa-solid fa-house"></i><span>Home</span></a>
+    <a href="#"><i class="fa-solid fa-book-open"></i><span>Courses</span></a>
+    <a href="#"><i class="fa-solid fa-clipboard-list"></i><span>Tests</span></a>
+    <a href="profile.html"><i class="fa-regular fa-user"></i><span>Profile</span></a>
+  </nav>
+
+  <!-- Firebase Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+  <script>
+    // Firebase Config (Aapka original config)
+    const firebaseConfig = {
+      apiKey: "AIzaSyDHo4a317WqzvSFB31X9RdbBksUNb81fZM",
+      authDomain: "padhaipilot-1dcae.firebaseapp.com",
+      projectId: "padhaipilot-1dcae",
+      storageBucket: "padhaipilot-1dcae.firebasestorage.app",
+      messagingSenderId: "752062230479",
+      appId: "1:752062230479:web:59680b96008a3aa052acba"
+    };
+
+    if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // Check if user is logged in, else kick to index.html
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        // Naam nikal kar likhna
+        db.collection("users").doc(user.uid).get().then((doc) => {
+          if (doc.exists) {
+            const firstName = doc.data().name.split(" ")[0]; // Sirf pehla naam
+            document.getElementById('userName').innerText = firstName;
+          }
+        });
+      } else {
+        window.location.href = "index.html"; // Login nahi hai toh wapas bhej do
+      }
+    });
+  </script>
+</body>
+</html>
