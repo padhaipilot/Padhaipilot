@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Padhai Pilot - Mega Store</title>
+  <title>Home - Padhai Pilot</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
@@ -25,87 +25,107 @@
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
     body { background-color: var(--bg); color: var(--text-main); overflow-x: hidden; }
 
-    /* SIDEBAR */
+    /* ================= SIDEBAR ================= */
     .sidebar { width: 260px; height: 100vh; background: var(--card); position: fixed; padding: 25px 20px; border-right: 1px solid var(--border); display: flex; flex-direction: column; z-index: 100; }
     .logo { display: flex; align-items: center; gap: 12px; font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 35px; padding-left: 10px; }
     .nav-item { display: flex; align-items: center; gap: 15px; padding: 12px 18px; text-decoration: none; color: var(--text-muted); border-radius: 12px; margin-bottom: 8px; font-weight: 600; transition: 0.3s; }
     .nav-item.active, .nav-item:hover { background: var(--primary-light); color: var(--primary); }
     .nav-item i { font-size: 20px; width: 24px; text-align: center; }
 
-    /* MAIN CONTENT */
+    /* ================= MAIN CONTENT ================= */
     .main-content { margin-left: 260px; padding: 30px 40px; padding-bottom: 120px; }
     
-    /* Header */
-    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
-    .header-left h2 { font-size: 26px; font-weight: 800; color: var(--text-main); }
-    .header-left p { font-size: 14px; color: var(--text-muted); }
-    .search-bar { background: white; border: 1px solid var(--border); padding: 10px 20px; border-radius: 20px; display: flex; align-items: center; gap: 10px; width: 350px; }
-    .search-bar input { border: none; outline: none; width: 100%; font-size: 13px; font-family: 'Poppins'; }
-    .user-avatar-small { width: 45px; height: 45px; background: #E2E8F0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--text-muted); cursor: pointer; border: 2px solid white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+    /* HEADER SYSTEM (Overlap Fix) */
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; background: transparent; width: 100%; }
+    .header-left h2 { font-size: 24px; font-weight: 800; color: var(--text-main); }
+    .header-left p { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+    
+    .header-right { display: flex; align-items: center; gap: 25px; } /* Clean separation gap */
+    .search-bar { background: white; border: 1px solid var(--border); padding: 10px 20px; border-radius: 20px; display: flex; align-items: center; gap: 10px; width: 320px; box-shadow: 0 2px 10px rgba(0,0,0,0.01); }
+    .search-bar input { border: none; outline: none; width: 100%; font-size: 13px; font-family: 'Poppins'; background: transparent; }
+    
+    .header-user-zone { display: flex; align-items: center; gap: 15px; }
+    .notif-btn { font-size: 20px; color: var(--text-muted); cursor: pointer; position: relative; }
+    .notif-btn .dot { position: absolute; top: -2px; right: -2px; width: 8px; height: 8px; background: var(--red); border-radius: 50%; }
+    .user-avatar-small { width: 42px; height: 42px; background: var(--primary-light); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; border: 2px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.2s; }
+    .user-avatar-small:hover { transform: scale(1.05); }
 
-    /* Sections Global */
-    .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; margin-top: 35px; }
-    .section-header h3 { font-size: 20px; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 10px; }
-    .view-all { font-size: 13px; color: var(--primary); font-weight: 600; text-decoration: none; background: white; padding: 6px 15px; border-radius: 20px; border: 1px solid var(--border); transition: 0.3s;}
+    /* ULTRA PREMIUM HERO BANNER */
+    .hero-banner { background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%); border-radius: 24px; padding: 35px 45px; color: white; display: flex; justify-content: space-between; align-items: center; margin-bottom: 35px; box-shadow: 0 15px 35px rgba(79, 70, 229, 0.2); position: relative; overflow: hidden; }
+    .banner-content { position: relative; z-index: 2; }
+    .banner-badge { background: rgba(255, 255, 255, 0.2); padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.2); }
+    .banner-content h1 { font-size: 30px; font-weight: 800; margin-bottom: 8px; line-height: 1.2; letter-spacing: -0.5px; }
+    .banner-content p { font-size: 14px; color: #E0E7FF; margin-bottom: 20px; max-width: 450px; }
+    .btn-live { background: white; color: var(--primary); padding: 10px 25px; border-radius: 12px; font-weight: 700; border: none; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s; }
+    .btn-live:hover { transform: translateY(-2px); }
+    .banner-icon-bg { font-size: 90px; color: rgba(255,255,255,0.12); position: absolute; right: 40px; transform: rotate(-10deg); }
+
+    /* SECTIONS LAYOUT */
+    .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; margin-top: 35px; }
+    .section-header h3 { font-size: 19px; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 10px; }
+    .view-all { font-size: 13px; color: var(--primary); font-weight: 600; text-decoration: none; background: white; padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border); transition: 0.2s; }
     .view-all:hover { background: var(--primary-light); }
     
     .scroll-container { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 15px; scrollbar-width: none; }
     .scroll-container::-webkit-scrollbar { display: none; }
 
-    /* 1. ENROLLED / ATTEMPTED CARD */
-    .enrolled-card { min-width: 320px; max-width: 320px; background: var(--card); border-radius: 16px; border: 1px solid var(--border); padding: 20px; display: flex; flex-direction: column; gap: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); transition: 0.3s; }
-    .enrolled-card:hover { border-color: var(--primary); box-shadow: 0 10px 20px rgba(67, 56, 202, 0.08); }
+    /* 1. CONTINUED JOURNEY CARDS */
+    .enrolled-card { min-width: 310px; max-width: 310px; background: var(--card); border-radius: 18px; border: 1px solid var(--border); padding: 20px; display: flex; flex-direction: column; gap: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.01); }
     .ec-top { display: flex; gap: 15px; align-items: center; }
-    .ec-img { width: 55px; height: 55px; border-radius: 10px; object-fit: cover; border: 1px solid var(--border); }
+    .ec-box { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: bold; }
     .ec-title h4 { font-size: 15px; font-weight: 700; color: var(--text-main); }
     .ec-title p { font-size: 12px; color: var(--text-muted); }
-    .progress-area { margin-top: 5px; }
+    .progress-area { margin-top: 2px; }
     .progress-text { display: flex; justify-content: space-between; font-size: 11px; font-weight: 600; margin-bottom: 5px; color: var(--text-muted); }
-    .progress-track { width: 100%; height: 6px; background: #F1F5F9; border-radius: 10px; overflow: hidden; }
+    .progress-track { width: 100%; height: 6px; background: #F1F5F9; border-radius: 10px; }
     .progress-fill { height: 100%; background: var(--green); border-radius: 10px; }
-    .resume-btn { background: var(--primary-light); color: var(--primary); border: none; padding: 10px; border-radius: 10px; font-weight: 700; cursor: pointer; width: 100%; transition: 0.3s; }
+    .resume-btn { background: var(--primary-light); color: var(--primary); border: none; padding: 11px; border-radius: 12px; font-weight: 700; cursor: pointer; width: 100%; transition: 0.2s; }
     .resume-btn:hover { background: var(--primary); color: white; }
 
-    /* 2, 3, 4. REAL STORE CARDS (With Image Thumbnails) */
-    .store-card { min-width: 280px; max-width: 280px; background: var(--card); border-radius: 16px; border: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; transition: 0.3s; }
-    .store-card:hover { transform: translateY(-5px); border-color: rgba(67, 56, 202, 0.3); box-shadow: 0 15px 30px rgba(67, 56, 202, 0.1); }
+    /* 2, 3, 4. TECH-DIGITAL CARDS (No broken stock images) */
+    .store-card { min-width: 275px; max-width: 275px; background: var(--card); border-radius: 18px; border: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.01); }
+    .store-card:hover { transform: translateY(-5px); border-color: rgba(67, 56, 202, 0.2); box-shadow: 0 12px 25px rgba(67, 56, 202, 0.08); }
     
-    /* Real Image Thumbnail Setup */
-    .card-thumb { height: 130px; padding: 15px; display: flex; justify-content: space-between; align-items: flex-start; background-size: cover; background-position: center; position: relative; }
-    .card-thumb::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.1)); }
-    .card-thumb > * { position: relative; z-index: 2; }
+    /* Modern Dynamic Header Gradients */
+    .card-thumb { height: 100px; padding: 15px; display: flex; justify-content: space-between; align-items: flex-start; position: relative; }
+    .thumb-ssc { background: linear-gradient(135deg, #4F46E5, #6366F1); }
+    .thumb-railway { background: linear-gradient(135deg, #059669, #10B981); }
+    .thumb-police { background: linear-gradient(135deg, #EA580C, #F97316); }
+    .thumb-bank { background: linear-gradient(135deg, #2563EB, #3B82F6); }
+    .thumb-free { background: linear-gradient(135deg, #7C3AED, #9333EA); }
     
-    .card-tag { background: white; padding: 4px 10px; border-radius: 12px; font-size: 10px; font-weight: 700; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    .card-logo-small { width: 40px; height: 40px; background: white; border-radius: 50%; padding: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-    .card-logo-small img { width: 100%; height: 100%; object-fit: contain; }
+    .card-tag { background: rgba(255, 255, 255, 0.22); color: white; padding: 4px 10px; border-radius: 12px; font-size: 10px; font-weight: 700; border: 1px solid rgba(255,255,255,0.2); }
+    .card-logo-badge { width: 38px; height: 38px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
     
-    .card-body { padding: 15px; display: flex; flex-direction: column; flex-grow: 1; }
-    .card-body h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
-    .meta-tags { display: flex; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
-    .meta-tags span { background: #F8FAFC; border: 1px solid var(--border); padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: 500; color: var(--text-muted); }
+    .card-body { padding: 18px; display: flex; flex-direction: column; flex-grow: 1; }
+    .card-body h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; color: var(--text-main); }
+    .meta-tags { display: flex; gap: 6px; margin-bottom: 15px; flex-wrap: wrap; }
+    .meta-tags span { background: #F8FAFC; border: 1px solid var(--border); padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 500; color: var(--text-muted); }
+    
     .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--border); padding-top: 12px; margin-top: auto; }
     .price-box { display: flex; flex-direction: column; }
     .old-price { font-size: 11px; text-decoration: line-through; color: #94A3B8; font-weight: 500; }
     .new-price { font-size: 16px; font-weight: 800; color: var(--text-main); }
-    .action-btn { background: white; color: var(--primary); border: 1px solid var(--primary); padding: 6px 15px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; }
-    .store-card:hover .action-btn { background: var(--primary); color: white; }
+    .action-btn { background: white; color: var(--primary); border: 1px solid var(--primary); padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+    .store-card:hover .action-btn { background: var(--primary); color: white; border-color: var(--primary); }
 
-    /* 5. ALL EXAMS GRID (Real Logos) */
+    /* 5. ALL EXAMS GRID LAYOUT */
     .exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
-    .exam-cat-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 25px 15px; text-align: center; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; align-items: center; gap: 12px; }
-    .exam-cat-card:hover { border-color: var(--primary); box-shadow: 0 10px 25px rgba(67, 56, 202, 0.08); transform: translateY(-5px); }
-    .exam-logo-img { width: 60px; height: 60px; object-fit: contain; }
+    .exam-cat-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 22px 15px; text-align: center; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .exam-cat-card:hover { border-color: var(--primary); box-shadow: 0 8px 20px rgba(67, 56, 202, 0.06); transform: translateY(-4px); }
+    .exam-logo-box { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; transition: 0.3s; }
+    .exam-cat-card:hover .exam-logo-box { background: var(--primary) !important; color: white !important; }
     .exam-cat-card h4 { font-size: 14px; font-weight: 700; color: var(--text-main); }
 
-    /* Mobile Nav */
-    .mobile-nav { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--card); border-top: 1px solid var(--border); justify-content: space-around; padding: 10px; z-index: 1000; }
-    .mobile-nav a { color: var(--text-muted); text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 11px; font-weight: 600; }
+    /* MOBILE NAVIGATION */
+    .mobile-nav { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--card); border-top: 1px solid var(--border); justify-content: space-around; padding: 10px 10px 18px 10px; z-index: 1000; box-shadow: 0 -5px 15px rgba(0,0,0,0.02); border-top-left-radius: 20px; border-top-right-radius: 20px; }
+    .mobile-nav a { color: var(--text-muted); text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 11px; font-weight: 600; gap: 4px; }
     .mobile-nav a.active { color: var(--primary); }
-    .mobile-nav a i { font-size: 20px; padding: 8px; }
+    .mobile-nav a i { font-size: 20px; padding: 6px; }
 
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       .sidebar { display: none; }
-      .main-content { margin-left: 0; padding: 15px; }
+      .main-content { margin-left: 0; padding: 20px; padding-bottom: 100px; }
       .mobile-nav { display: flex; }
       .search-bar { display: none; }
       .exam-grid { grid-template-columns: repeat(2, 1fr); }
@@ -114,49 +134,59 @@
 </head>
 <body>
 
-  <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="logo"><i class="fa-solid fa-graduation-cap"></i> Padhai Pilot</div>
-    <a href="home.html" class="nav-item active"><i class="fa-solid fa-house"></i> Store</a>
-    <a href="profile.html" class="nav-item"><i class="fa-solid fa-table-columns"></i> Dashboard</a>
-    <a href="#" class="nav-item"><i class="fa-solid fa-book-open"></i> My Courses</a>
-    <a href="#" class="nav-item"><i class="fa-solid fa-file-pen"></i> Mock Tests</a>
-    <a href="#" class="nav-item"><i class="fa-solid fa-gear"></i> Settings</a>
+    <div class="nav-menu">
+      <a href="home.html" class="nav-item active"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="profile.html" class="nav-item"><i class="fa-solid fa-table-columns"></i> Dashboard</a>
+      <a href="#" class="nav-item"><i class="fa-solid fa-book-open"></i> My Courses</a>
+      <a href="#" class="nav-item"><i class="fa-solid fa-file-pen"></i> Mock Tests</a>
+      <a href="#" class="nav-item"><i class="fa-solid fa-gear"></i> Settings</a>
+    </div>
   </aside>
 
-  <!-- MAIN CONTENT -->
   <main class="main-content">
     
     <div class="header">
       <div class="header-left">
         <h2>Explore Portal 🚀</h2>
-        <p>Your one-stop destination for government exams.</p>
+        <p>Your premium gateway to success.</p>
       </div>
       <div class="header-right">
         <div class="search-bar">
           <i class="fa-solid fa-magnifying-glass" style="color:var(--text-muted);"></i>
-          <input type="text" placeholder="Search SSC, Banking, UP Police...">
+          <input type="text" placeholder="Search tests, exams, notes...">
         </div>
-        <div class="user-avatar-small" onclick="window.location.href='profile.html'">
-          <i class="fa-solid fa-user"></i>
+        <div class="header-user-zone">
+          <div class="notif-btn"><i class="fa-regular fa-bell"></i><span class="dot"></span></div>
+          <div class="user-avatar-small" onclick="window.location.href='profile.html'" title="View Dashboard">
+            <i class="fa-regular fa-user"></i>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- ========================================== -->
-    <!-- 1. ENROLLED / ATTEMPTED TESTS -->
-    <!-- ========================================== -->
+    <div class="hero-banner">
+      <div class="banner-content">
+        <div class="banner-badge"><i class="fa-solid fa-satellite-dish"></i> Live Contest</div>
+        <h1>UP Police Mega Mock Test 2026</h1>
+        <p>Real-time All India ranking prediction. Free entry for first 10,000 students.</p>
+        <button class="btn-live">Join Live Free</button>
+      </div>
+      <i class="fa-solid fa-trophy banner-icon-bg"></i>
+    </div>
+
     <div class="section-header" style="margin-top: 0;">
-      <h3><i class="fa-solid fa-clock-rotate-left" style="color: var(--primary);"></i> Continue Your Journey</h3>
+      <h3><i class="fa-solid fa-circle-play" style="color: var(--primary);"></i> Continue Practice</h3>
     </div>
     <div class="scroll-container">
       
       <div class="enrolled-card">
         <div class="ec-top">
-          <img src="https://images.unsplash.com/photo-1589994965851-a8f479c573a9?w=100&q=80" alt="UP Police" class="ec-img">
+          <div class="ec-box" style="background: #FFE4E6; color: #E11D48;"><i class="fa-solid fa-shield-halved"></i></div>
           <div class="ec-title">
-            <h4>UP Police Constable</h4>
-            <p>Full Mock Test Series</p>
+            <h4>UP Police Constable 2026</h4>
+            <p>Maha Mock Test Series</p>
           </div>
         </div>
         <div class="progress-area">
@@ -168,10 +198,10 @@
 
       <div class="enrolled-card">
         <div class="ec-top">
-          <img src="https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?w=100&q=80" alt="SSC" class="ec-img">
+          <div class="ec-box" style="background: #E0E7FF; color: #4338CA;"><i class="fa-solid fa-building-columns"></i></div>
           <div class="ec-title">
-            <h4>SSC CGL Tier 1</h4>
-            <p>Previous Year Papers</p>
+            <h4>SSC CGL Tier 1 Pack</h4>
+            <p>Full Length Mocks</p>
           </div>
         </div>
         <div class="progress-area">
@@ -183,215 +213,138 @@
       
     </div>
 
-    <!-- ========================================== -->
-    <!-- 2. NEW TEST SERIES (Bhari Hui List) -->
-    <!-- ========================================== -->
     <div class="section-header">
-      <h3><i class="fa-solid fa-sparkles" style="color: var(--orange);"></i> New & Trending Test Series</h3>
+      <h3><i class="fa-solid fa-fire" style="color: var(--orange);"></i> New & Trending Test Series</h3>
       <a href="#" class="view-all">View All</a>
     </div>
     <div class="scroll-container">
       
-      <!-- SSC Card -->
       <div class="store-card">
-        <div class="card-thumb" style="background-image: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&q=80');">
-          <span class="card-tag" style="color: #D97706;">Bestseller</span>
-          <div class="card-logo-small"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Staff_Selection_Commission_Logo.png/150px-Staff_Selection_Commission_Logo.png" alt="SSC"></div>
+        <div class="card-thumb thumb-ssc">
+          <span class="card-tag">Bestseller</span>
+          <div class="card-logo-badge" style="color:#4338CA;"><i class="fa-solid fa-building-columns"></i></div>
         </div>
         <div class="card-body">
           <h4>SSC CHSL 2026 Complete Pack</h4>
           <div class="meta-tags"><span>Hindi/Eng</span> <span>250+ Tests</span></div>
           <div class="card-footer">
             <div class="price-box"><span class="old-price">₹499</span><span class="new-price">₹149</span></div>
-            <button class="action-btn">Explore</button>
+            <button class="action-btn">Unlock</button>
           </div>
         </div>
       </div>
 
-      <!-- Railway Card -->
       <div class="store-card">
-        <div class="card-thumb" style="background-image: url('https://images.unsplash.com/photo-1532104938166-f0896027c0fa?w=400&q=80');">
-          <span class="card-tag" style="color: #4338CA;">Trending</span>
-          <div class="card-logo-small"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/45/Indian_Railways_Logo.svg/150px-Indian_Railways_Logo.svg.png" alt="RRB"></div>
+        <div class="card-thumb thumb-railway">
+          <span class="card-tag">Trending</span>
+          <div class="card-logo-badge" style="color:#10B981;"><i class="fa-solid fa-train"></i></div>
         </div>
         <div class="card-body">
           <h4>Railway RRB NTPC Mains</h4>
           <div class="meta-tags"><span>Hindi/Eng</span> <span>100+ Tests</span></div>
           <div class="card-footer">
             <div class="price-box"><span class="old-price">₹299</span><span class="new-price">₹99</span></div>
-            <button class="action-btn">Explore</button>
+            <button class="action-btn">Unlock</button>
           </div>
         </div>
       </div>
 
-      <!-- UP Police Card -->
       <div class="store-card">
-        <div class="card-thumb" style="background-image: url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=400&q=80');">
-          <span class="card-tag" style="color: #EF4444;">Hot</span>
-          <div class="card-logo-small"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3a/Uttar_Pradesh_Police_Seal.svg/150px-Uttar_Pradesh_Police_Seal.svg.png" alt="UP Police"></div>
+        <div class="card-thumb thumb-police">
+          <span class="card-tag">Hot</span>
+          <div class="card-logo-badge" style="color:#EA580C;"><i class="fa-solid fa-gavel"></i></div>
         </div>
         <div class="card-body">
-          <h4>UP Police SI (Daroga) Mock</h4>
+          <h4>UP SI (Sub Inspector) Pro Test</h4>
           <div class="meta-tags"><span>Hindi</span> <span>50+ Tests</span></div>
           <div class="card-footer">
             <div class="price-box"><span class="old-price">₹199</span><span class="new-price">₹49</span></div>
-            <button class="action-btn">Explore</button>
+            <button class="action-btn">Unlock</button>
           </div>
         </div>
       </div>
 
-      <!-- Banking Card -->
-      <div class="store-card">
-        <div class="card-thumb" style="background-image: url('https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=400&q=80');">
-          <span class="card-tag" style="color: #10B981;">New</span>
-          <div class="card-logo-small"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/SBI-logo.svg/150px-SBI-logo.svg.png" alt="Bank"></div>
-        </div>
-        <div class="card-body">
-          <h4>SBI PO Pre + Mains Test Series</h4>
-          <div class="meta-tags"><span>English</span> <span>200+ Tests</span></div>
-          <div class="card-footer">
-            <div class="price-box"><span class="old-price">₹599</span><span class="new-price">₹199</span></div>
-            <button class="action-btn">Explore</button>
-          </div>
-        </div>
-      </div>
-      
     </div>
 
-    <!-- ========================================== -->
-    <!-- 3. FREE TESTS FOR YOU -->
-    <!-- ========================================== -->
     <div class="section-header">
-      <h3><i class="fa-solid fa-gift" style="color: var(--green);"></i> Free Tests For You</h3>
+      <h3><i class="fa-solid fa-gift" style="color: var(--green);"></i> Free Daily Quizzes</h3>
     </div>
     <div class="scroll-container">
       
       <div class="store-card">
-        <div class="card-thumb" style="background-image: url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=80'); height: 90px;">
-          <span class="card-tag" style="color: var(--green);">Free Daily</span>
+        <div class="card-thumb thumb-free">
+          <span class="card-tag">Free Quiz</span>
+          <div class="card-logo-badge" style="color:#7C3AED;"><i class="fa-solid fa-bolt"></i></div>
         </div>
         <div class="card-body">
-          <h4>Current Affairs Daily Quiz</h4>
+          <h4>Current Affairs Daily Booster</h4>
           <div class="meta-tags"><span>10 Ques</span> <span>10 Mins</span></div>
-          <div class="card-footer"><span class="new-price" style="color: var(--green);">FREE</span><button class="action-btn">Start</button></div>
+          <div class="card-footer"><span class="new-price" style="color: var(--green);">FREE</span><button class="action-btn" style="background:var(--primary); color:white; border:none;">Start</button></div>
         </div>
       </div>
 
       <div class="store-card">
-        <div class="card-thumb" style="background-image: url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&q=80'); height: 90px;">
-          <span class="card-tag" style="color: var(--red);">Mini Mock</span>
+        <div class="card-thumb thumb-bank">
+          <span class="card-tag">Mini Mock</span>
+          <div class="card-logo-badge" style="color:#2563EB;"><i class="fa-solid fa-spell-check"></i></div>
         </div>
         <div class="card-body">
-          <h4>English Grammar Practice</h4>
+          <h4>English Grammar Speed Test</h4>
           <div class="meta-tags"><span>20 Ques</span> <span>15 Mins</span></div>
-          <div class="card-footer"><span class="new-price" style="color: var(--green);">FREE</span><button class="action-btn">Start</button></div>
-        </div>
-      </div>
-      
-      <div class="store-card">
-        <div class="card-thumb" style="background-image: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&q=80'); height: 90px;">
-          <span class="card-tag" style="color: var(--primary);">Speed Test</span>
-        </div>
-        <div class="card-body">
-          <h4>Quant Calculation Booster</h4>
-          <div class="meta-tags"><span>15 Ques</span> <span>10 Mins</span></div>
-          <div class="card-footer"><span class="new-price" style="color: var(--green);">FREE</span><button class="action-btn">Start</button></div>
-        </div>
-      </div>
-
-      <div class="store-card">
-        <div class="card-thumb" style="background-image: url('https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=400&q=80'); height: 90px;">
-          <span class="card-tag" style="color: var(--orange);">Logic</span>
-        </div>
-        <div class="card-body">
-          <h4>Reasoning Puzzle Master</h4>
-          <div class="meta-tags"><span>5 Puzzles</span> <span>20 Mins</span></div>
-          <div class="card-footer"><span class="new-price" style="color: var(--green);">FREE</span><button class="action-btn">Start</button></div>
+          <div class="card-footer"><span class="new-price" style="color: var(--green);">FREE</span><button class="action-btn" style="background:var(--primary); color:white; border:none;">Start</button></div>
         </div>
       </div>
 
     </div>
 
-    <!-- ========================================== -->
-    <!-- 4. UPCOMING EXAMS -->
-    <!-- ========================================== -->
     <div class="section-header">
-      <h3><i class="fa-solid fa-calendar-days" style="color: var(--blue);"></i> Upcoming Exam Series</h3>
+      <h3><i class="fa-solid fa-calendar-plus" style="color: var(--blue);"></i> Upcoming Test Series</h3>
     </div>
     <div class="scroll-container">
       <div class="store-card">
-        <div class="card-thumb" style="background-image: url('https://images.unsplash.com/photo-1555861496-faa66bfcb974?w=400&q=80'); height: 90px;">
-          <span class="card-tag" style="color: var(--blue);">Coming Soon</span>
+        <div class="card-thumb thumb-ssc" style="background: linear-gradient(135deg, #1E293B, #475569);">
+          <span class="card-tag">Pre-Book</span>
+          <div class="card-logo-badge" style="color:#475569;"><i class="fa-solid fa-hourglass-half"></i></div>
         </div>
         <div class="card-body">
-          <h4>UP Lekhpal 2026</h4>
-          <div class="meta-tags"><span>Starts: 25 July</span></div>
-          <div class="card-footer"><span class="old-price" style="text-decoration:none;">Pre-book Now</span><button class="action-btn">Notify Me</button></div>
-        </div>
-      </div>
-      <div class="store-card">
-        <div class="card-thumb" style="background-image: url('https://images.unsplash.com/photo-1543286386-713bdd548da4?w=400&q=80'); height: 90px;">
-          <span class="card-tag" style="color: var(--blue);">Coming Soon</span>
-        </div>
-        <div class="card-body">
-          <h4>RRB Group D Maha Test</h4>
-          <div class="meta-tags"><span>Starts: 10 Aug</span></div>
-          <div class="card-footer"><span class="old-price" style="text-decoration:none;">Pre-book Now</span><button class="action-btn">Notify Me</button></div>
+          <h4>UP Lekhpal Mega Test Pack</h4>
+          <div class="meta-tags"><span>Launching: 25 July</span></div>
+          <div class="card-footer"><span class="old-price" style="text-decoration:none; font-weight:600;">Coming Soon</span><button class="action-btn">Notify Me</button></div>
         </div>
       </div>
     </div>
 
-    <!-- ========================================== -->
-    <!-- 5. ALL EXAMS (GRID WITH REAL LOGOS) -->
-    <!-- ========================================== -->
     <div class="section-header">
-      <h3><i class="fa-solid fa-layer-group" style="color: #8B5CF6;"></i> Explore All Exam Categories</h3>
+      <h3><i class="fa-solid fa-layer-group" style="color: #8B5CF6;"></i> Explore Exam Categories</h3>
     </div>
     <div class="exam-grid">
       
-      <!-- SSC -->
       <div class="exam-cat-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Staff_Selection_Commission_Logo.png/150px-Staff_Selection_Commission_Logo.png" class="exam-logo-img" alt="SSC">
+        <div class="exam-logo-box" style="background:#EEF2FF; color:#4338CA;"><i class="fa-solid fa-building-columns"></i></div>
         <h4>SSC Exams</h4>
       </div>
 
-      <!-- Police -->
       <div class="exam-cat-card">
-        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3a/Uttar_Pradesh_Police_Seal.svg/150px-Uttar_Pradesh_Police_Seal.svg.png" class="exam-logo-img" alt="Police">
+        <div class="exam-logo-box" style="background:#FFF1F2; color:#E11D48;"><i class="fa-solid fa-shield-halved"></i></div>
         <h4>Police Exams</h4>
       </div>
 
-      <!-- Railways -->
       <div class="exam-cat-card">
-        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/45/Indian_Railways_Logo.svg/150px-Indian_Railways_Logo.svg.png" class="exam-logo-img" alt="Railway">
+        <div class="exam-logo-box" style="background:#E6F4EA; color:#137333;"><i class="fa-solid fa-train"></i></div>
         <h4>Railways</h4>
       </div>
 
-      <!-- Banking -->
       <div class="exam-cat-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/SBI-logo.svg/150px-SBI-logo.svg.png" class="exam-logo-img" alt="Banking">
+        <div class="exam-logo-box" style="background:#E8F0FE; color:#1A73E8;"><i class="fa-solid fa-credit-card"></i></div>
         <h4>Banking</h4>
-      </div>
-
-      <!-- Defence (Generic shield if specific not available, using a placeholder logic) -->
-      <div class="exam-cat-card">
-        <img src="https://cdn-icons-png.flaticon.com/128/906/906324.png" class="exam-logo-img" style="opacity: 0.8;" alt="Defence">
-        <h4>Defence / IB</h4>
-      </div>
-
-      <!-- Teaching -->
-      <div class="exam-cat-card">
-        <img src="https://cdn-icons-png.flaticon.com/128/1945/1945958.png" class="exam-logo-img" style="opacity: 0.8;" alt="Teaching">
-        <h4>Teaching</h4>
       </div>
 
     </div>
 
   </main>
 
-  <!-- MOBILE NAVIGATION -->
   <nav class="mobile-nav">
-    <a href="home.html" class="active"><i class="fa-solid fa-house"></i><span>Store</span></a>
+    <a href="home.html" class="active"><i class="fa-solid fa-house"></i><span>Home</span></a>
     <a href="#"><i class="fa-solid fa-book-open"></i><span>Courses</span></a>
     <a href="#"><i class="fa-solid fa-clipboard-list"></i><span>Tests</span></a>
     <a href="profile.html"><i class="fa-regular fa-user"></i><span>Profile</span></a>
