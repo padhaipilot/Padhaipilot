@@ -43,28 +43,22 @@
     .search-bar input { border: none; outline: none; width: 100%; font-size: 13px; font-family: 'Poppins'; }
     .user-avatar-small { width: 45px; height: 45px; background: #E2E8F0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--text-muted); cursor: pointer; border: 2px solid white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
 
-    /* Hero Banner */
-    .hero-banner { background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%); border-radius: 24px; padding: 40px 50px; color: white; display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; position: relative; overflow: hidden; }
-    .banner-content h1 { font-size: 32px; font-weight: 800; margin-bottom: 10px; }
-    .banner-content p { font-size: 15px; color: #E0E7FF; margin-bottom: 20px; }
-    .btn-live { background: white; color: var(--primary); padding: 10px 25px; border-radius: 12px; font-weight: 700; border: none; cursor: pointer; }
-
     /* Sections Global */
-    .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; margin-top: 40px; }
+    .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; margin-top: 35px; }
     .section-header h3 { font-size: 20px; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 10px; }
-    .view-all { font-size: 13px; color: var(--primary); font-weight: 600; text-decoration: none; background: white; padding: 6px 15px; border-radius: 20px; border: 1px solid var(--border); }
+    .view-all { font-size: 13px; color: var(--primary); font-weight: 600; text-decoration: none; background: white; padding: 6px 15px; border-radius: 20px; border: 1px solid var(--border); transition: 0.3s;}
+    .view-all:hover { background: var(--primary-light); }
     
     .scroll-container { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 15px; scrollbar-width: none; }
     .scroll-container::-webkit-scrollbar { display: none; }
 
-    /* 1. ENROLLED / ATTEMPTED CARD (Resume Style) */
-    .enrolled-card { min-width: 300px; max-width: 300px; background: var(--card); border-radius: 16px; border: 1px solid var(--border); padding: 20px; display: flex; flex-direction: column; gap: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); transition: 0.3s; }
+    /* 1. ENROLLED / ATTEMPTED CARD */
+    .enrolled-card { min-width: 320px; max-width: 320px; background: var(--card); border-radius: 16px; border: 1px solid var(--border); padding: 20px; display: flex; flex-direction: column; gap: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); transition: 0.3s; }
     .enrolled-card:hover { border-color: var(--primary); box-shadow: 0 10px 20px rgba(67, 56, 202, 0.08); }
     .ec-top { display: flex; gap: 15px; align-items: center; }
-    .ec-icon { width: 45px; height: 45px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+    .ec-img { width: 55px; height: 55px; border-radius: 10px; object-fit: cover; border: 1px solid var(--border); }
     .ec-title h4 { font-size: 15px; font-weight: 700; color: var(--text-main); }
     .ec-title p { font-size: 12px; color: var(--text-muted); }
-    /* Progress Bar */
     .progress-area { margin-top: 5px; }
     .progress-text { display: flex; justify-content: space-between; font-size: 11px; font-weight: 600; margin-bottom: 5px; color: var(--text-muted); }
     .progress-track { width: 100%; height: 6px; background: #F1F5F9; border-radius: 10px; overflow: hidden; }
@@ -72,14 +66,21 @@
     .resume-btn { background: var(--primary-light); color: var(--primary); border: none; padding: 10px; border-radius: 10px; font-weight: 700; cursor: pointer; width: 100%; transition: 0.3s; }
     .resume-btn:hover { background: var(--primary); color: white; }
 
-    /* 2, 3, 4. STORE CARDS (New, Free, Upcoming) */
+    /* 2, 3, 4. REAL STORE CARDS (With Image Thumbnails) */
     .store-card { min-width: 280px; max-width: 280px; background: var(--card); border-radius: 16px; border: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; transition: 0.3s; }
     .store-card:hover { transform: translateY(-5px); border-color: rgba(67, 56, 202, 0.3); box-shadow: 0 15px 30px rgba(67, 56, 202, 0.1); }
-    .card-thumb { height: 90px; padding: 15px; display: flex; justify-content: space-between; align-items: flex-start; }
+    
+    /* Real Image Thumbnail Setup */
+    .card-thumb { height: 130px; padding: 15px; display: flex; justify-content: space-between; align-items: flex-start; background-size: cover; background-position: center; position: relative; }
+    .card-thumb::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.1)); }
+    .card-thumb > * { position: relative; z-index: 2; }
+    
     .card-tag { background: white; padding: 4px 10px; border-radius: 12px; font-size: 10px; font-weight: 700; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    .card-icon-round { width: 45px; height: 45px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .card-logo-small { width: 40px; height: 40px; background: white; border-radius: 50%; padding: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+    .card-logo-small img { width: 100%; height: 100%; object-fit: contain; }
+    
     .card-body { padding: 15px; display: flex; flex-direction: column; flex-grow: 1; }
-    .card-body h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+    .card-body h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
     .meta-tags { display: flex; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
     .meta-tags span { background: #F8FAFC; border: 1px solid var(--border); padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: 500; color: var(--text-muted); }
     .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--border); padding-top: 12px; margin-top: auto; }
@@ -89,14 +90,12 @@
     .action-btn { background: white; color: var(--primary); border: 1px solid var(--primary); padding: 6px 15px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; }
     .store-card:hover .action-btn { background: var(--primary); color: white; }
 
-    /* 5. ALL EXAMS GRID (Logos & Categories) */
+    /* 5. ALL EXAMS GRID (Real Logos) */
     .exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
-    .exam-cat-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 25px 15px; text-align: center; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .exam-cat-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 25px 15px; text-align: center; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; align-items: center; gap: 12px; }
     .exam-cat-card:hover { border-color: var(--primary); box-shadow: 0 10px 25px rgba(67, 56, 202, 0.08); transform: translateY(-5px); }
-    .exam-logo { width: 55px; height: 55px; background: var(--primary-light); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 28px; color: var(--primary); transition: 0.3s; }
-    .exam-cat-card:hover .exam-logo { background: var(--primary); color: white; }
+    .exam-logo-img { width: 60px; height: 60px; object-fit: contain; }
     .exam-cat-card h4 { font-size: 14px; font-weight: 700; color: var(--text-main); }
-    .exam-cat-card p { font-size: 11px; color: var(--text-muted); }
 
     /* Mobile Nav */
     .mobile-nav { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--card); border-top: 1px solid var(--border); justify-content: space-around; padding: 10px; z-index: 1000; }
@@ -104,7 +103,6 @@
     .mobile-nav a.active { color: var(--primary); }
     .mobile-nav a i { font-size: 20px; padding: 8px; }
 
-    /* Responsive */
     @media (max-width: 768px) {
       .sidebar { display: none; }
       .main-content { margin-left: 0; padding: 15px; }
@@ -129,7 +127,6 @@
   <!-- MAIN CONTENT -->
   <main class="main-content">
     
-    <!-- HEADER -->
     <div class="header">
       <div class="header-left">
         <h2>Explore Portal 🚀</h2>
@@ -146,28 +143,17 @@
       </div>
     </div>
 
-    <!-- HERO BANNER -->
-    <div class="hero-banner">
-      <div class="banner-content">
-        <h1>UP Police Mega Mock Test!</h1>
-        <p>All India Rank Prediction • Free for first 10,000 students.</p>
-        <button class="btn-live">Join Live Free</button>
-      </div>
-      <i class="fa-solid fa-trophy" style="font-size: 100px; opacity: 0.2; transform: rotate(-15deg);"></i>
-    </div>
-
     <!-- ========================================== -->
-    <!-- SECTION 1: YOUR ENROLLED / ATTEMPTED TESTS -->
+    <!-- 1. ENROLLED / ATTEMPTED TESTS -->
     <!-- ========================================== -->
     <div class="section-header" style="margin-top: 0;">
       <h3><i class="fa-solid fa-clock-rotate-left" style="color: var(--primary);"></i> Continue Your Journey</h3>
     </div>
     <div class="scroll-container">
       
-      <!-- Enrolled 1 -->
       <div class="enrolled-card">
         <div class="ec-top">
-          <div class="ec-icon" style="background: #E0E7FF; color: #4338CA;"><i class="fa-solid fa-shield-halved"></i></div>
+          <img src="https://images.unsplash.com/photo-1589994965851-a8f479c573a9?w=100&q=80" alt="UP Police" class="ec-img">
           <div class="ec-title">
             <h4>UP Police Constable</h4>
             <p>Full Mock Test Series</p>
@@ -180,10 +166,9 @@
         <button class="resume-btn">Resume Practice</button>
       </div>
 
-      <!-- Enrolled 2 -->
       <div class="enrolled-card">
         <div class="ec-top">
-          <div class="ec-icon" style="background: #FEF3C7; color: #D97706;"><i class="fa-solid fa-building-columns"></i></div>
+          <img src="https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?w=100&q=80" alt="SSC" class="ec-img">
           <div class="ec-title">
             <h4>SSC CGL Tier 1</h4>
             <p>Previous Year Papers</p>
@@ -195,10 +180,11 @@
         </div>
         <button class="resume-btn">Resume Practice</button>
       </div>
+      
     </div>
 
     <!-- ========================================== -->
-    <!-- SECTION 2: NEW TEST SERIES -->
+    <!-- 2. NEW TEST SERIES (Bhari Hui List) -->
     <!-- ========================================== -->
     <div class="section-header">
       <h3><i class="fa-solid fa-sparkles" style="color: var(--orange);"></i> New & Trending Test Series</h3>
@@ -206,11 +192,11 @@
     </div>
     <div class="scroll-container">
       
-      <!-- New Series 1 -->
+      <!-- SSC Card -->
       <div class="store-card">
-        <div class="card-thumb" style="background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);">
+        <div class="card-thumb" style="background-image: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&q=80');">
           <span class="card-tag" style="color: #D97706;">Bestseller</span>
-          <div class="card-icon-round" style="color: #D97706;"><i class="fa-solid fa-building-columns"></i></div>
+          <div class="card-logo-small"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Staff_Selection_Commission_Logo.png/150px-Staff_Selection_Commission_Logo.png" alt="SSC"></div>
         </div>
         <div class="card-body">
           <h4>SSC CHSL 2026 Complete Pack</h4>
@@ -222,11 +208,11 @@
         </div>
       </div>
 
-      <!-- New Series 2 -->
+      <!-- Railway Card -->
       <div class="store-card">
-        <div class="card-thumb" style="background: linear-gradient(135deg, #E0E7FF 0%, #C7D2FE 100%);">
+        <div class="card-thumb" style="background-image: url('https://images.unsplash.com/photo-1532104938166-f0896027c0fa?w=400&q=80');">
           <span class="card-tag" style="color: #4338CA;">Trending</span>
-          <div class="card-icon-round" style="color: #4338CA;"><i class="fa-solid fa-train"></i></div>
+          <div class="card-logo-small"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/45/Indian_Railways_Logo.svg/150px-Indian_Railways_Logo.svg.png" alt="RRB"></div>
         </div>
         <div class="card-body">
           <h4>Railway RRB NTPC Mains</h4>
@@ -237,11 +223,43 @@
           </div>
         </div>
       </div>
+
+      <!-- UP Police Card -->
+      <div class="store-card">
+        <div class="card-thumb" style="background-image: url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=400&q=80');">
+          <span class="card-tag" style="color: #EF4444;">Hot</span>
+          <div class="card-logo-small"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3a/Uttar_Pradesh_Police_Seal.svg/150px-Uttar_Pradesh_Police_Seal.svg.png" alt="UP Police"></div>
+        </div>
+        <div class="card-body">
+          <h4>UP Police SI (Daroga) Mock</h4>
+          <div class="meta-tags"><span>Hindi</span> <span>50+ Tests</span></div>
+          <div class="card-footer">
+            <div class="price-box"><span class="old-price">₹199</span><span class="new-price">₹49</span></div>
+            <button class="action-btn">Explore</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banking Card -->
+      <div class="store-card">
+        <div class="card-thumb" style="background-image: url('https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=400&q=80');">
+          <span class="card-tag" style="color: #10B981;">New</span>
+          <div class="card-logo-small"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/SBI-logo.svg/150px-SBI-logo.svg.png" alt="Bank"></div>
+        </div>
+        <div class="card-body">
+          <h4>SBI PO Pre + Mains Test Series</h4>
+          <div class="meta-tags"><span>English</span> <span>200+ Tests</span></div>
+          <div class="card-footer">
+            <div class="price-box"><span class="old-price">₹599</span><span class="new-price">₹199</span></div>
+            <button class="action-btn">Explore</button>
+          </div>
+        </div>
+      </div>
       
     </div>
 
     <!-- ========================================== -->
-    <!-- SECTION 3: FREE TESTS FOR YOU -->
+    <!-- 3. FREE TESTS FOR YOU -->
     <!-- ========================================== -->
     <div class="section-header">
       <h3><i class="fa-solid fa-gift" style="color: var(--green);"></i> Free Tests For You</h3>
@@ -249,62 +267,82 @@
     <div class="scroll-container">
       
       <div class="store-card">
-        <div class="card-thumb" style="background: #D1FAE5;">
+        <div class="card-thumb" style="background-image: url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=80'); height: 90px;">
           <span class="card-tag" style="color: var(--green);">Free Daily</span>
-          <div class="card-icon-round" style="color: var(--green);"><i class="fa-solid fa-newspaper"></i></div>
         </div>
         <div class="card-body">
           <h4>Current Affairs Daily Quiz</h4>
-          <div class="meta-tags"><span>10 Questions</span> <span>10 Mins</span></div>
-          <div class="card-footer">
-            <span class="new-price" style="color: var(--green);">FREE</span>
-            <button class="action-btn">Start Test</button>
-          </div>
+          <div class="meta-tags"><span>10 Ques</span> <span>10 Mins</span></div>
+          <div class="card-footer"><span class="new-price" style="color: var(--green);">FREE</span><button class="action-btn">Start</button></div>
         </div>
       </div>
 
       <div class="store-card">
-        <div class="card-thumb" style="background: #FEE2E2;">
+        <div class="card-thumb" style="background-image: url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&q=80'); height: 90px;">
           <span class="card-tag" style="color: var(--red);">Mini Mock</span>
-          <div class="card-icon-round" style="color: var(--red);"><i class="fa-solid fa-language"></i></div>
         </div>
         <div class="card-body">
           <h4>English Grammar Practice</h4>
-          <div class="meta-tags"><span>20 Questions</span> <span>15 Mins</span></div>
-          <div class="card-footer">
-            <span class="new-price" style="color: var(--green);">FREE</span>
-            <button class="action-btn">Start Test</button>
-          </div>
+          <div class="meta-tags"><span>20 Ques</span> <span>15 Mins</span></div>
+          <div class="card-footer"><span class="new-price" style="color: var(--green);">FREE</span><button class="action-btn">Start</button></div>
+        </div>
+      </div>
+      
+      <div class="store-card">
+        <div class="card-thumb" style="background-image: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&q=80'); height: 90px;">
+          <span class="card-tag" style="color: var(--primary);">Speed Test</span>
+        </div>
+        <div class="card-body">
+          <h4>Quant Calculation Booster</h4>
+          <div class="meta-tags"><span>15 Ques</span> <span>10 Mins</span></div>
+          <div class="card-footer"><span class="new-price" style="color: var(--green);">FREE</span><button class="action-btn">Start</button></div>
+        </div>
+      </div>
+
+      <div class="store-card">
+        <div class="card-thumb" style="background-image: url('https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=400&q=80'); height: 90px;">
+          <span class="card-tag" style="color: var(--orange);">Logic</span>
+        </div>
+        <div class="card-body">
+          <h4>Reasoning Puzzle Master</h4>
+          <div class="meta-tags"><span>5 Puzzles</span> <span>20 Mins</span></div>
+          <div class="card-footer"><span class="new-price" style="color: var(--green);">FREE</span><button class="action-btn">Start</button></div>
         </div>
       </div>
 
     </div>
 
     <!-- ========================================== -->
-    <!-- SECTION 4: UPCOMING EXAMS -->
+    <!-- 4. UPCOMING EXAMS -->
     <!-- ========================================== -->
     <div class="section-header">
       <h3><i class="fa-solid fa-calendar-days" style="color: var(--blue);"></i> Upcoming Exam Series</h3>
     </div>
     <div class="scroll-container">
       <div class="store-card">
-        <div class="card-thumb" style="background: #DBEAFE;">
+        <div class="card-thumb" style="background-image: url('https://images.unsplash.com/photo-1555861496-faa66bfcb974?w=400&q=80'); height: 90px;">
           <span class="card-tag" style="color: var(--blue);">Coming Soon</span>
-          <div class="card-icon-round" style="color: var(--blue);"><i class="fa-solid fa-scale-balanced"></i></div>
         </div>
         <div class="card-body">
-          <h4>UP SI (Sub Inspector) 2026</h4>
+          <h4>UP Lekhpal 2026</h4>
           <div class="meta-tags"><span>Starts: 25 July</span></div>
-          <div class="card-footer">
-            <span class="old-price" style="text-decoration:none;">Pre-book Now</span>
-            <button class="action-btn" style="background: #F1F5F9; color: var(--text-muted); border-color: var(--border);">Notify Me</button>
-          </div>
+          <div class="card-footer"><span class="old-price" style="text-decoration:none;">Pre-book Now</span><button class="action-btn">Notify Me</button></div>
+        </div>
+      </div>
+      <div class="store-card">
+        <div class="card-thumb" style="background-image: url('https://images.unsplash.com/photo-1543286386-713bdd548da4?w=400&q=80'); height: 90px;">
+          <span class="card-tag" style="color: var(--blue);">Coming Soon</span>
+        </div>
+        <div class="card-body">
+          <h4>RRB Group D Maha Test</h4>
+          <div class="meta-tags"><span>Starts: 10 Aug</span></div>
+          <div class="card-footer"><span class="old-price" style="text-decoration:none;">Pre-book Now</span><button class="action-btn">Notify Me</button></div>
         </div>
       </div>
     </div>
 
     <!-- ========================================== -->
-    <!-- SECTION 5: ALL EXAMS (GRID WITH LOGOS) -->
+    <!-- 5. ALL EXAMS (GRID WITH REAL LOGOS) -->
     <!-- ========================================== -->
     <div class="section-header">
       <h3><i class="fa-solid fa-layer-group" style="color: #8B5CF6;"></i> Explore All Exam Categories</h3>
@@ -313,44 +351,38 @@
       
       <!-- SSC -->
       <div class="exam-cat-card">
-        <div class="exam-logo"><i class="fa-solid fa-building-columns"></i></div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Staff_Selection_Commission_Logo.png/150px-Staff_Selection_Commission_Logo.png" class="exam-logo-img" alt="SSC">
         <h4>SSC Exams</h4>
-        <p>CGL, CHSL, MTS, CPO</p>
       </div>
 
       <!-- Police -->
       <div class="exam-cat-card">
-        <div class="exam-logo"><i class="fa-solid fa-shield-halved"></i></div>
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3a/Uttar_Pradesh_Police_Seal.svg/150px-Uttar_Pradesh_Police_Seal.svg.png" class="exam-logo-img" alt="Police">
         <h4>Police Exams</h4>
-        <p>UP Police, Delhi Police</p>
       </div>
 
       <!-- Railways -->
       <div class="exam-cat-card">
-        <div class="exam-logo"><i class="fa-solid fa-train"></i></div>
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/45/Indian_Railways_Logo.svg/150px-Indian_Railways_Logo.svg.png" class="exam-logo-img" alt="Railway">
         <h4>Railways</h4>
-        <p>RRB NTPC, Group D, ALP</p>
       </div>
 
       <!-- Banking -->
       <div class="exam-cat-card">
-        <div class="exam-logo"><i class="fa-solid fa-piggy-bank"></i></div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/SBI-logo.svg/150px-SBI-logo.svg.png" class="exam-logo-img" alt="Banking">
         <h4>Banking</h4>
-        <p>IBPS, SBI PO, Clerk</p>
       </div>
 
-      <!-- Defence -->
+      <!-- Defence (Generic shield if specific not available, using a placeholder logic) -->
       <div class="exam-cat-card">
-        <div class="exam-logo"><i class="fa-solid fa-jet-fighter"></i></div>
+        <img src="https://cdn-icons-png.flaticon.com/128/906/906324.png" class="exam-logo-img" style="opacity: 0.8;" alt="Defence">
         <h4>Defence / IB</h4>
-        <p>NDA, CDS, AFCAT</p>
       </div>
 
       <!-- Teaching -->
       <div class="exam-cat-card">
-        <div class="exam-logo"><i class="fa-solid fa-chalkboard-user"></i></div>
+        <img src="https://cdn-icons-png.flaticon.com/128/1945/1945958.png" class="exam-logo-img" style="opacity: 0.8;" alt="Teaching">
         <h4>Teaching</h4>
-        <p>CTET, UPTET, KVS</p>
       </div>
 
     </div>
