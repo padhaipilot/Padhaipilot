@@ -7,6 +7,74 @@
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  <!-- ================= NEW PREMIUM HERO SECTION CSS ================= -->
+ <style>
+    .hero-section { position: relative; display: flex; align-items: center; justify-content: space-between; padding: 110px 5% 70px 5%; min-height: 85vh; overflow: hidden; background: #F8FAFC; border-bottom: 1px solid #E2E8F0; }
+    
+    .hero-grid-pattern { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(#CBD5E1 1px, transparent 1px); background-size: 35px 35px; opacity: 0.4; z-index: 0; }
+    /* Aankhon ko thandak dene wala Green Glow */
+    .hero-bg-glow { position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(255,255,255,0) 70%); top: -15%; right: -5%; z-index: 0; }
+
+    .hero-content { position: relative; z-index: 2; width: 50%; padding-right: 40px; }
+    
+    .trust-badge { display: inline-flex; align-items: center; gap: 8px; background: white; padding: 8px 18px; border-radius: 30px; font-size: 12px; font-weight: 800; color: #059669; border: 1px solid #D1FAE5; box-shadow: 0 4px 15px rgba(0,0,0,0.03); margin-bottom: 25px; letter-spacing: 0.5px; }
+    .pulse-dot { width: 8px; height: 8px; background: #10B981; border-radius: 50%; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); animation: pulseDot 2s infinite; }
+    @keyframes pulseDot { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
+
+    .hero-title { font-size: 55px; font-weight: 800; color: #0F172A; line-height: 1.15; margin-bottom: 20px; letter-spacing: -1px; }
+    /* Premium Green Gradient Text */
+    .gradient-text { background: linear-gradient(135deg, #059669, #10B981); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-subtitle { font-size: 17px; color: #64748B; line-height: 1.6; margin-bottom: 35px; max-width: 90%; font-weight: 500; }
+    
+    .hero-buttons { display: flex; align-items: center; gap: 30px; }
+    /* Smooth Green Button */
+    .btn-primary { background: linear-gradient(135deg, #059669, #10B981); color: white; padding: 16px 35px; border-radius: 14px; font-size: 16px; font-weight: 700; border: none; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3); display: flex; align-items: center; gap: 10px; }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(16, 185, 129, 0.4); }
+    
+    .trusted-users { display: flex; align-items: center; gap: 12px; }
+    .user-avatars { display: flex; align-items: center; }
+    .user-avatars img { width: 38px; height: 38px; border-radius: 50%; border: 2px solid white; margin-left: -12px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .user-avatars img:first-child { margin-left: 0; }
+    .avatar-plus { width: 38px; height: 38px; border-radius: 50%; border: 2px solid white; margin-left: -12px; background: #D1FAE5; color: #059669; display: flex; justify-content: center; align-items: center; font-size: 14px; font-weight: 800; box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 5; }
+    .trusted-users span { font-size: 13px; color: #64748B; font-weight: 500; }
+    .trusted-users strong { color: #0F172A; font-weight: 800; }
+
+    /* ================= Visuals & Slider Area ================= */
+    .hero-visuals { position: relative; z-index: 2; width: 45%; display: flex; justify-content: center; align-items: center; }
+    .main-visual-card { position: relative; width: 100%; max-width: 480px; aspect-ratio: 4/4.5; border-radius: 30px; overflow: visible; }
+    
+    /* Auto Slider Images CSS */
+    .slide-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.12); opacity: 0; transition: opacity 1s ease-in-out; z-index: 1; }
+    .slide-img.active { opacity: 1; z-index: 2; }
+    
+    /* Crisp Solid White Floating Badges (No Blur) */
+    .floating-badge { position: absolute; background: #FFFFFF; padding: 12px 20px; border-radius: 18px; box-shadow: 0 15px 35px rgba(0,0,0,0.08); border: 1px solid #E2E8F0; display: flex; align-items: center; gap: 14px; animation: floatY 4s ease-in-out infinite; z-index: 10; }
+    .fb-1 { top: 40px; left: -60px; animation-delay: 0s; }
+    .fb-2 { bottom: 80px; right: -50px; animation-delay: 1.5s; }
+    .fb-3 { bottom: -25px; left: 40px; animation-delay: 0.7s; padding: 10px 18px; }
+
+    @keyframes floatY { 0% { transform: translateY(0); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0); } }
+
+    .fb-icon { width: 45px; height: 45px; border-radius: 14px; display: flex; justify-content: center; align-items: center; font-size: 20px; color: white; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    .fb-icon.green { background: linear-gradient(135deg, #10B981, #059669); }
+    .fb-icon.orange { background: linear-gradient(135deg, #F59E0B, #D97706); }
+    .fb-icon.purple { background: linear-gradient(135deg, #8B5CF6, #6D28D9); }
+    
+    .fb-text h4 { font-size: 15px; font-weight: 800; color: #0F172A; margin-bottom: 2px; }
+    .fb-text p { font-size: 11px; font-weight: 600; color: #64748B; }
+
+    @media (max-width: 900px) {
+      .hero-section { flex-direction: column; text-align: center; padding-top: 120px; }
+      .hero-content { width: 100%; padding-right: 0; margin-bottom: 70px; display: flex; flex-direction: column; align-items: center; }
+      .hero-title { font-size: 42px; }
+      .hero-subtitle { margin: 0 auto 30px auto; }
+      .hero-buttons { flex-direction: column; gap: 20px; }
+      .hero-visuals { width: 100%; max-width: 400px; margin: 0 auto; }
+      .fb-1 { left: -10px; top: 20px; }
+      .fb-2 { right: -10px; bottom: 40px; }
+      .fb-3 { left: 20px; bottom: -20px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -33,49 +101,62 @@
   <main class="main-content">
     
     <section class="hero-section">
+      <div class="hero-grid-pattern"></div>
+      <div class="hero-bg-glow"></div>
+
       <div class="hero-content">
-        <div class="badge">Your Success, Our Mission</div>
-        <h1 class="hero-title">Smart Preparation<br><span class="highlight">Better Results</span></h1>
-        <p class="hero-subtitle">Mock Tests, Notes, PDFs, Reels & More<br>Everything you need to crack government exams.</p>
+        <div class="trust-badge">
+          <span class="pulse-dot"></span> INDIA'S MOST TRUSTED PLATFORM
+        </div>
+        <h1 class="hero-title">Crack Government Exams with <span class="gradient-text">Top Rank</span></h1>
+        <p class="hero-subtitle">Interactive mock tests, premium PDF notes, and 1-minute smart reels. Your complete toolkit for guaranteed selection.</p>
         
         <div class="hero-buttons">
-          <button class="btn-primary"><i class="fa-solid fa-rocket"></i> Start Practice</button>
-          <button class="btn-outline"><i class="fa-solid fa-book-open"></i> Explore Exams</button>
+          <button class="btn-primary" onclick="openAuthModal()">Get Started Free <i class="fa-solid fa-arrow-right"></i></button>
+          
+          <div class="trusted-users">
+            <div class="user-avatars">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="User">
+              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&q=80" alt="User">
+              <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&q=80" alt="User">
+              <div class="avatar-plus">+</div>
+            </div>
+            <span>Joined by <strong>50,000+</strong> students</span>
+          </div>
         </div>
       </div>
       
-      <div class="hero-image">
-        <img src="https://placehold.co/500x400/e2e8f0/64748b?text=Aapki+Illustration+Yahan+Aayegi" alt="Student Studying">
-      </div>
-    </section>
+      <div class="hero-visuals">
+        <div class="main-visual-card">
+          
+          <img class="slide-img active" src="https://img.freepik.com/free-vector/learning-concept-illustration_114360-6186.jpg?w=800" alt="Study Illustration 1">
+          <img class="slide-img" src="https://img.freepik.com/free-vector/online-learning-concept-illustration_114360-2796.jpg?w=800" alt="Study Illustration 2">
+          <img class="slide-img" src="https://img.freepik.com/free-vector/library-concept-illustration_114360-2782.jpg?w=800" alt="Study Illustration 3">
+          
+          <div class="floating-badge fb-1">
+            <div class="fb-icon green"><i class="fa-solid fa-bullseye"></i></div>
+            <div class="fb-text">
+              <h4>99% Accuracy</h4>
+              <p>Exam Prediction</p>
+            </div>
+          </div>
 
-    <section class="stats-bar">
-      <div class="stat-item">
-        <div class="stat-icon icon-blue"><i class="fa-solid fa-users"></i></div>
-        <div class="stat-text">
-          <h3>50K+</h3>
-          <p>Students</p>
-        </div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-icon icon-green"><i class="fa-regular fa-circle-check"></i></div>
-        <div class="stat-text">
-          <h3>1M+</h3>
-          <p>Tests Attempted</p>
-        </div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-icon icon-red"><i class="fa-solid fa-shield-halved"></i></div>
-        <div class="stat-text">
-          <h3>1000+</h3>
-          <p>Mock Tests</p>
-        </div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-icon icon-purple"><i class="fa-solid fa-file-pdf"></i></div>
-        <div class="stat-text">
-          <h3>500+</h3>
-          <p>PDF Notes</p>
+          <div class="floating-badge fb-2">
+            <div class="fb-icon orange"><i class="fa-solid fa-bolt"></i></div>
+            <div class="fb-text">
+              <h4>Daily Live Tests</h4>
+              <p>All India Ranking</p>
+            </div>
+          </div>
+
+          <div class="floating-badge fb-3">
+            <div class="fb-icon purple"><i class="fa-solid fa-file-pdf"></i></div>
+            <div class="fb-text">
+              <h4>Premium Notes</h4>
+              <p>Downloadable PDFs</p>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -426,6 +507,44 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
   <script src="app.js"></script>
+  <script>
+    let currentSlideIdx = 0;
+    function startPilotSlider() {
+      const slides = document.querySelectorAll('.p-slide');
+      if (slides.length === 0) return;
+      
+      // Purani slide ko chhupao
+      slides[currentSlideIdx].style.opacity = 0;
+      slides[currentSlideIdx].style.zIndex = 1;
+      
+      // Agli slide par jao
+      currentSlideIdx = (currentSlideIdx + 1) % slides.length;
+      
+      // Nayi slide ko dikhao
+      slides[currentSlideIdx].style.opacity = 1;
+      slides[currentSlideIdx].style.zIndex = 2;
+    }
+    // Har 3 second (3000ms) mein badlega
+    setInterval(startPilotSlider, 3000);
+  </script>
+  <script>
+    let heroSlideIndex = 0;
+    function changeHeroSlide() {
+      let slides = document.querySelectorAll('.slide-img');
+      if(slides.length === 0) return;
+      
+      // Purani image chupao
+      slides[heroSlideIndex].classList.remove('active');
+      
+      // Agli image par jao
+      heroSlideIndex = (heroSlideIndex + 1) % slides.length;
+      
+      // Nayi image dikhao
+      slides[heroSlideIndex].classList.add('active');
+    }
+    // Har 3 second (3000ms) mein illustration badlega
+    setInterval(changeHeroSlide, 3000);
+  </script>
 </body>
 </html>
 
